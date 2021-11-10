@@ -29,9 +29,9 @@ namespace pr1
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.treeView1 = new System.Windows.Forms.TreeView();
@@ -49,24 +49,24 @@ namespace pr1
 			// dataGridView1
 			// 
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(496, 48);
+			this.dataGridView1.Location = new System.Drawing.Point(485, 48);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(287, 236);
+			this.dataGridView1.Size = new System.Drawing.Size(471, 182);
 			this.dataGridView1.TabIndex = 0;
 			// 
 			// chart1
 			// 
-			chartArea2.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea2);
-			legend2.Name = "Legend1";
-			this.chart1.Legends.Add(legend2);
-			this.chart1.Location = new System.Drawing.Point(496, 290);
+			chartArea1.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea1);
+			legend1.Name = "Legend1";
+			this.chart1.Legends.Add(legend1);
+			this.chart1.Location = new System.Drawing.Point(485, 236);
 			this.chart1.Name = "chart1";
-			series2.ChartArea = "ChartArea1";
-			series2.Legend = "Legend1";
-			series2.Name = "Age";
-			this.chart1.Series.Add(series2);
-			this.chart1.Size = new System.Drawing.Size(287, 148);
+			series1.ChartArea = "ChartArea1";
+			series1.Legend = "Legend1";
+			series1.Name = "Age";
+			this.chart1.Series.Add(series1);
+			this.chart1.Size = new System.Drawing.Size(471, 202);
 			this.chart1.TabIndex = 1;
 			this.chart1.Text = "chart1";
 			// 
@@ -102,7 +102,7 @@ namespace pr1
             this.newToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(982, 24);
 			this.menuStrip1.TabIndex = 7;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -118,14 +118,14 @@ namespace pr1
 			// teacherToolStripMenuItem
 			// 
 			this.teacherToolStripMenuItem.Name = "teacherToolStripMenuItem";
-			this.teacherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.teacherToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
 			this.teacherToolStripMenuItem.Text = "teacher";
 			this.teacherToolStripMenuItem.Click += new System.EventHandler(this.teacherToolStripMenuItem_Click);
 			// 
 			// studentToolStripMenuItem
 			// 
 			this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-			this.studentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.studentToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
 			this.studentToolStripMenuItem.Text = "student";
 			this.studentToolStripMenuItem.Click += new System.EventHandler(this.studentToolStripMenuItem_Click);
 			// 
@@ -133,7 +133,7 @@ namespace pr1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(982, 450);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.comboBox1);

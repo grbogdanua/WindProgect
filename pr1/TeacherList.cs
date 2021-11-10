@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pr1
 {
-	class TeacherList
+	public class TeacherList
 	{
 		public List<Teacher> Teachers { get; private set; }
 
@@ -44,15 +44,17 @@ namespace pr1
 				teacher.Getinfo();
 			}
 		}*/
-		public void Serch(string teachersurname)
+		public int Serch(string teachersurname)
 		{
-			foreach (Teacher teacher in Teachers)
+			for (int i = 0; i < Teachers.Count(); i++)
 			{
-				if (teacher.Surname == teachersurname)
+				if (Teachers[i].Surname == teachersurname)
 				{
+					return (i);
 					//teacher.Getinfo();
 				}
 			}
+			return (Teachers.Count());
 		}
 		/*public void WorkWithTeacher(string teachersurname)
 		{

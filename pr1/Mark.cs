@@ -14,7 +14,7 @@ namespace pr1
 		Stupid,
 		Verystupid
 	}
-	class Mark
+	public class Mark
 	{
 		public int[] Marks { get; set; }
 		public StudentTipe AverageMark { get; set; }

@@ -8,3 +8,15 @@ C:\main\work\C#\pr1\pr1\obj\Debug\pr1.csproj.GenerateResource.cache
 C:\main\work\C#\pr1\pr1\obj\Debug\pr1.csproj.CoreCompileInputs.cache
 C:\main\work\C#\pr1\pr1\obj\Debug\pr1.exe
 C:\main\work\C#\pr1\pr1\obj\Debug\pr1.pdb
+C:\main\work\C#\pr1\WindProgect\pr1\bin\Debug\pr1.exe.config
+C:\main\work\C#\pr1\WindProgect\pr1\bin\Debug\pr1.exe
+C:\main\work\C#\pr1\WindProgect\pr1\bin\Debug\pr1.pdb
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.csprojAssemblyReference.cache
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.AddStudent.resources
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.Form1.resources
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.Properties.Resources.resources
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.csproj.GenerateResource.cache
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.csproj.CoreCompileInputs.cache
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.exe
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.pdb
+C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.AddTeacher.resources

@@ -14,10 +14,16 @@ namespace pr1
 		[STAThread]
 		static void Main()
 		{
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Form1());
 			
 		}
 	}
+	/*public static class CreateStudent
+	{
+		public delegate void createstudentEvent(Student student, string teacher);
+		public static createstudentEvent createstudentEventHandler;
+	}*/
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pr1
 {
-	class Human
+	public class Human
 	{
 		public string Name { get; set; }
 		public string Surname { get; set; }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace pr1
 {
-	
-	class Teacher : Human
+
+	public class Teacher : Human
 	{ 
 
 

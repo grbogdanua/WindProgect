@@ -8,7 +8,7 @@ namespace pr1
 { 
 	[Serializable]
 
-	class Student : Human
+	public class Student : Human
 	{
 		public Mark Grade { get; set; }
 		public Student(string name, string surname, int age, Address address, Mark mark)

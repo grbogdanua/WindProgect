@@ -13,16 +13,20 @@ namespace pr1
 	public partial class Form1 : Form
 	{
 		private List<Human> h1 = new List<Human> { };
-		private TeacherList teacherList = new TeacherList();
-		AddStudent form = new AddStudent();
+		public TeacherList teacherList = new TeacherList();
+		private AddStudent addStudent = new AddStudent();
+		private AddTeacher addTeacher = new AddTeacher();
 		public Form1()
 		{
+			addStudent.Owner = this;
 			InitiateList();
 			//CreateList();
 			InitializeComponent();
 			//initialeDataTanle();
 			initealeTree();
 			initealeComboBox();
+			addStudent.createstudentEvent += ConectStudentToTeacher;
+			addTeacher.createteacherEvent += AddTeacher;
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
@@ -35,7 +39,7 @@ namespace pr1
 			teacher.AddStudent(new Student("David", "Forida", 19, new Address("Ucraine", "Kherson", "Nova Odesa", "Kolomia", 204), new Mark()));
 			teacher.AddStudent(new Student("Frdor", "Hotica", 12, new Address("Ucraine", "Kherson", "Nova Odesa", "Kolomia", 205), new Mark()));
 			teacherList.AddTeacher(teacher);
-			teacher = new Teacher("Arison", "Dad", 30, new Address("Ucraine", "Kherson", "Kahovka", "Armanska", 156));
+			teacher = new Teacher("Arison", "Yaoi", 30, new Address("Ucraine", "Kherson", "Kahovka", "Armanska", 156));
 			teacher.AddStudent(new Student("David", "Forida", 19, new Address("Ucraine", "Kherson", "Nova Odesa", "Kolomia", 204), new Mark()));
 			teacher.AddStudent(new Student("Frdor", "Hotica", 12, new Address("Ucraine", "Kherson", "Nova Odesa", "Kolomia", 205), new Mark()));
 			teacherList.AddTeacher(teacher);
@@ -64,6 +68,7 @@ namespace pr1
 		}*/
 		public void initealeTree()
 		{
+			this.treeView1.Nodes.Clear();
 			TreeNode rude = new TreeNode();
 			rude.Name = "Don";
 			rude.Text = "List Teachers";
@@ -90,12 +95,29 @@ namespace pr1
 
 		private void studentToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			form.Show();
+			addStudent.Show();
 		}
 
 		private void teacherToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("New Teacher");
+			addTeacher.Show();
+		}
+		void ConectStudentToTeacher(Student student, string teacher)
+		{
+			for(int i=0; i<teacherList.Teachers.Count(); i++)
+			{
+				if(teacherList.Teachers[i].Surname == teacher)
+				{
+					teacherList.Teachers[i].Students.Add(student);
+					initealeTree();
+					break;
+				}
+			}
+		}
+		void AddTeacher(Teacher teacher)
+		{
+			teacherList.Teachers.Add(teacher);
+			initealeTree();
 		}
 	}
 }
