@@ -29,46 +29,27 @@ namespace pr1
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.TeacherdataGridView = new System.Windows.Forms.DataGridView();
 			this.treeView1 = new System.Windows.Forms.TreeView();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.CitycomboBox = new System.Windows.Forms.ComboBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.teacherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+			this.StudentdataGridView = new System.Windows.Forms.DataGridView();
+			((System.ComponentModel.ISupportInitialize)(this.TeacherdataGridView)).BeginInit();
 			this.menuStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.StudentdataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// dataGridView1
+			// TeacherdataGridView
 			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(485, 48);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(471, 182);
-			this.dataGridView1.TabIndex = 0;
-			// 
-			// chart1
-			// 
-			chartArea1.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea1);
-			legend1.Name = "Legend1";
-			this.chart1.Legends.Add(legend1);
-			this.chart1.Location = new System.Drawing.Point(485, 236);
-			this.chart1.Name = "chart1";
-			series1.ChartArea = "ChartArea1";
-			series1.Legend = "Legend1";
-			series1.Name = "Age";
-			this.chart1.Series.Add(series1);
-			this.chart1.Size = new System.Drawing.Size(471, 202);
-			this.chart1.TabIndex = 1;
-			this.chart1.Text = "chart1";
+			this.TeacherdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.TeacherdataGridView.Location = new System.Drawing.Point(485, 48);
+			this.TeacherdataGridView.Name = "TeacherdataGridView";
+			this.TeacherdataGridView.Size = new System.Drawing.Size(471, 182);
+			this.TeacherdataGridView.TabIndex = 0;
 			// 
 			// treeView1
 			// 
@@ -77,14 +58,16 @@ namespace pr1
 			this.treeView1.Name = "treeView1";
 			this.treeView1.Size = new System.Drawing.Size(170, 390);
 			this.treeView1.TabIndex = 2;
+			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
 			// 
-			// comboBox1
+			// CitycomboBox
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(254, 48);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(169, 21);
-			this.comboBox1.TabIndex = 3;
+			this.CitycomboBox.FormattingEnabled = true;
+			this.CitycomboBox.Location = new System.Drawing.Point(254, 48);
+			this.CitycomboBox.Name = "CitycomboBox";
+			this.CitycomboBox.Size = new System.Drawing.Size(169, 21);
+			this.CitycomboBox.TabIndex = 3;
+			this.CitycomboBox.SelectedIndexChanged += new System.EventHandler(this.CitycomboBox_SelectedIndexChanged_1);
 			// 
 			// button1
 			// 
@@ -129,25 +112,33 @@ namespace pr1
 			this.studentToolStripMenuItem.Text = "student";
 			this.studentToolStripMenuItem.Click += new System.EventHandler(this.studentToolStripMenuItem_Click);
 			// 
+			// StudentdataGridView
+			// 
+			this.StudentdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.StudentdataGridView.Location = new System.Drawing.Point(485, 237);
+			this.StudentdataGridView.Name = "StudentdataGridView";
+			this.StudentdataGridView.Size = new System.Drawing.Size(471, 201);
+			this.StudentdataGridView.TabIndex = 8;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(982, 450);
+			this.Controls.Add(this.StudentdataGridView);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.CitycomboBox);
 			this.Controls.Add(this.treeView1);
-			this.Controls.Add(this.chart1);
-			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.TeacherdataGridView);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TeacherdataGridView)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.StudentdataGridView)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -155,15 +146,15 @@ namespace pr1
 
 		#endregion
 
-		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+		private System.Windows.Forms.DataGridView TeacherdataGridView;
 		private System.Windows.Forms.TreeView treeView1;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox CitycomboBox;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem teacherToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
+		private System.Windows.Forms.DataGridView StudentdataGridView;
 	}
 }
 
