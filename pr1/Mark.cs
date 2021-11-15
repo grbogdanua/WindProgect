@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pr1
 {
-	public enum StudentTipe
+	public enum StudentType
 	{
 		Excellent,
 		Good,
@@ -17,7 +17,7 @@ namespace pr1
 	public class Mark
 	{
 		public int[] Marks { get; set; }
-		public StudentTipe AverageMark { get; set; }
+		public StudentType AverageMark { get; set; }
 
 		public Mark(int[] marks)
 		{
@@ -51,7 +51,7 @@ namespace pr1
 			}*/
 			AverageMark = Average(Marks);
 		}
-		public StudentTipe Average(int[] marks)
+		public StudentType Average(int[] marks)
 		{
 			int summ = 0;
 			int count = 0;
@@ -63,15 +63,15 @@ namespace pr1
 			switch (summ / count)
 			{
 				case 5:
-					return (StudentTipe.Excellent);
+					return (StudentType.Excellent);
 				case 4:
-					return (StudentTipe.Good);
+					return (StudentType.Good);
 				case 3:
-					return (StudentTipe.Bad);
+					return (StudentType.Bad);
 				case 2:
-					return (StudentTipe.Stupid);
+					return (StudentType.Stupid);
 				default:
-					return (StudentTipe.Verystupid);
+					return (StudentType.Verystupid);
 			}
 		}
 		public void GetInfo()

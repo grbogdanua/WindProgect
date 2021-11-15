@@ -29,7 +29,7 @@ namespace pr1
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SaveButton = new System.Windows.Forms.Button();
+			this.saveAndHideButton = new System.Windows.Forms.Button();
 			this.CanselButton = new System.Windows.Forms.Button();
 			this.StudentLable = new System.Windows.Forms.Label();
 			this.StudentNameTextBox = new System.Windows.Forms.TextBox();
@@ -50,17 +50,19 @@ namespace pr1
 			this.StudentHousenumberTextBox = new System.Windows.Forms.TextBox();
 			this.StudentHousenumber = new System.Windows.Forms.Label();
 			this.TeachergroupBox = new System.Windows.Forms.GroupBox();
+			this.randomize = new System.Windows.Forms.Button();
+			this.saveButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// SaveButton
+			// saveAndHideButton
 			// 
-			this.SaveButton.Location = new System.Drawing.Point(247, 350);
-			this.SaveButton.Name = "SaveButton";
-			this.SaveButton.Size = new System.Drawing.Size(75, 23);
-			this.SaveButton.TabIndex = 0;
-			this.SaveButton.Text = "Save";
-			this.SaveButton.UseVisualStyleBackColor = true;
-			this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+			this.saveAndHideButton.Location = new System.Drawing.Point(224, 379);
+			this.saveAndHideButton.Name = "saveAndHideButton";
+			this.saveAndHideButton.Size = new System.Drawing.Size(98, 23);
+			this.saveAndHideButton.TabIndex = 0;
+			this.saveAndHideButton.Text = "Save And Close";
+			this.saveAndHideButton.UseVisualStyleBackColor = true;
+			this.saveAndHideButton.Click += new System.EventHandler(this.SaveAndHideButton_Click);
 			// 
 			// CanselButton
 			// 
@@ -227,11 +229,33 @@ namespace pr1
 			this.TeachergroupBox.TabStop = false;
 			this.TeachergroupBox.Text = "Teachers";
 			// 
+			// randomize
+			// 
+			this.randomize.Location = new System.Drawing.Point(371, 301);
+			this.randomize.Name = "randomize";
+			this.randomize.Size = new System.Drawing.Size(75, 23);
+			this.randomize.TabIndex = 22;
+			this.randomize.Text = "Randomize";
+			this.randomize.UseVisualStyleBackColor = true;
+			this.randomize.Click += new System.EventHandler(this.randomize_Click);
+			// 
+			// saveButton
+			// 
+			this.saveButton.Location = new System.Drawing.Point(224, 350);
+			this.saveButton.Name = "saveButton";
+			this.saveButton.Size = new System.Drawing.Size(98, 23);
+			this.saveButton.TabIndex = 23;
+			this.saveButton.Text = "Save";
+			this.saveButton.UseVisualStyleBackColor = true;
+			this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
+			// 
 			// AddStudent
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.saveButton);
+			this.Controls.Add(this.randomize);
 			this.Controls.Add(this.TeachergroupBox);
 			this.Controls.Add(this.StudentHousenumberTextBox);
 			this.Controls.Add(this.StudentHousenumber);
@@ -252,10 +276,11 @@ namespace pr1
 			this.Controls.Add(this.StudentNameTextBox);
 			this.Controls.Add(this.StudentLable);
 			this.Controls.Add(this.CanselButton);
-			this.Controls.Add(this.SaveButton);
+			this.Controls.Add(this.saveAndHideButton);
 			this.Name = "AddStudent";
 			this.Text = "AddStudent";
 			this.Load += new System.EventHandler(this.AddStudent_Load);
+			this.Shown += new System.EventHandler(this.AddStudent_Shown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -263,7 +288,7 @@ namespace pr1
 
 		#endregion
 
-		private System.Windows.Forms.Button SaveButton;
+		private System.Windows.Forms.Button saveAndHideButton;
 		private System.Windows.Forms.Button CanselButton;
 		private System.Windows.Forms.Label StudentLable;
 		private System.Windows.Forms.TextBox StudentNameTextBox;
@@ -284,5 +309,7 @@ namespace pr1
 		private System.Windows.Forms.TextBox StudentHousenumberTextBox;
 		private System.Windows.Forms.Label StudentHousenumber;
 		private System.Windows.Forms.GroupBox TeachergroupBox;
+		private System.Windows.Forms.Button randomize;
+		private System.Windows.Forms.Button saveButton;
 	}
 }

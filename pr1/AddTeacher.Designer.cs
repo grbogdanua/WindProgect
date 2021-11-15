@@ -48,7 +48,9 @@ namespace pr1
 			this.TeacherNameTextBox = new System.Windows.Forms.TextBox();
 			this.TeacherLable = new System.Windows.Forms.Label();
 			this.CanselButton = new System.Windows.Forms.Button();
-			this.SaveButton = new System.Windows.Forms.Button();
+			this.SaveAndHideButton = new System.Windows.Forms.Button();
+			this.randomize = new System.Windows.Forms.Button();
+			this.saveButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// TeacherHousenumberTextBox
@@ -205,22 +207,45 @@ namespace pr1
 			this.CanselButton.TabIndex = 22;
 			this.CanselButton.Text = "Cansel";
 			this.CanselButton.UseVisualStyleBackColor = true;
+			this.CanselButton.Click += new System.EventHandler(this.CanselButton_Click);
 			// 
-			// SaveButton
+			// SaveAndHideButton
 			// 
-			this.SaveButton.Location = new System.Drawing.Point(204, 343);
-			this.SaveButton.Name = "SaveButton";
-			this.SaveButton.Size = new System.Drawing.Size(75, 23);
-			this.SaveButton.TabIndex = 21;
-			this.SaveButton.Text = "Save";
-			this.SaveButton.UseVisualStyleBackColor = true;
-			this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+			this.SaveAndHideButton.Location = new System.Drawing.Point(204, 372);
+			this.SaveAndHideButton.Name = "SaveAndHideButton";
+			this.SaveAndHideButton.Size = new System.Drawing.Size(100, 23);
+			this.SaveAndHideButton.TabIndex = 21;
+			this.SaveAndHideButton.Text = "Save And Hide";
+			this.SaveAndHideButton.UseVisualStyleBackColor = true;
+			this.SaveAndHideButton.Click += new System.EventHandler(this.SaveAndHideButton_Click);
+			// 
+			// randomize
+			// 
+			this.randomize.Location = new System.Drawing.Point(338, 277);
+			this.randomize.Name = "randomize";
+			this.randomize.Size = new System.Drawing.Size(75, 23);
+			this.randomize.TabIndex = 41;
+			this.randomize.Text = "Randomize";
+			this.randomize.UseVisualStyleBackColor = true;
+			this.randomize.Click += new System.EventHandler(this.randomize_Click);
+			// 
+			// saveButton
+			// 
+			this.saveButton.Location = new System.Drawing.Point(204, 343);
+			this.saveButton.Name = "saveButton";
+			this.saveButton.Size = new System.Drawing.Size(100, 23);
+			this.saveButton.TabIndex = 42;
+			this.saveButton.Text = "Save";
+			this.saveButton.UseVisualStyleBackColor = true;
+			this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
 			// 
 			// AddTeacher
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.saveButton);
+			this.Controls.Add(this.randomize);
 			this.Controls.Add(this.TeacherHousenumberTextBox);
 			this.Controls.Add(this.TeacherHousenumber);
 			this.Controls.Add(this.TeacherStreetTextBox);
@@ -240,7 +265,7 @@ namespace pr1
 			this.Controls.Add(this.TeacherNameTextBox);
 			this.Controls.Add(this.TeacherLable);
 			this.Controls.Add(this.CanselButton);
-			this.Controls.Add(this.SaveButton);
+			this.Controls.Add(this.SaveAndHideButton);
 			this.Name = "AddTeacher";
 			this.Text = "AddTeacher";
 			this.ResumeLayout(false);
@@ -269,6 +294,8 @@ namespace pr1
 		private System.Windows.Forms.TextBox TeacherNameTextBox;
 		private System.Windows.Forms.Label TeacherLable;
 		private System.Windows.Forms.Button CanselButton;
-		private System.Windows.Forms.Button SaveButton;
+		private System.Windows.Forms.Button SaveAndHideButton;
+		private System.Windows.Forms.Button randomize;
+		private System.Windows.Forms.Button saveButton;
 	}
 }

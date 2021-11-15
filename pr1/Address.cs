@@ -16,6 +16,7 @@ namespace pr1
 
 		public Address()
 		{
+			/*
 			Console.Write("Country: ");
 			Country = Console.ReadLine();
 			Console.Write("District: ");
@@ -33,6 +34,7 @@ namespace pr1
 				enteredhousenumber = Console.ReadLine();
 			}
 			Housenumber = num;
+			*/
 		}
 		public Address(string newcountry, string newdistrict,string newcity,string newstreet,int newhousenumber)
 		{

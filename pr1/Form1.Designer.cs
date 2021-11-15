@@ -32,12 +32,15 @@ namespace pr1
 			this.TeacherdataGridView = new System.Windows.Forms.DataGridView();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.CitycomboBox = new System.Windows.Forms.ComboBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.showSelected = new System.Windows.Forms.Button();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.teacherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StudentdataGridView = new System.Windows.Forms.DataGridView();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.TeacherdataGridView)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.StudentdataGridView)).BeginInit();
@@ -58,7 +61,6 @@ namespace pr1
 			this.treeView1.Name = "treeView1";
 			this.treeView1.Size = new System.Drawing.Size(170, 390);
 			this.treeView1.TabIndex = 2;
-			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
 			// 
 			// CitycomboBox
 			// 
@@ -69,20 +71,21 @@ namespace pr1
 			this.CitycomboBox.TabIndex = 3;
 			this.CitycomboBox.SelectedIndexChanged += new System.EventHandler(this.CitycomboBox_SelectedIndexChanged_1);
 			// 
-			// button1
+			// showSelected
 			// 
-			this.button1.Location = new System.Drawing.Point(306, 122);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 4;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.showSelected.Location = new System.Drawing.Point(254, 94);
+			this.showSelected.Name = "showSelected";
+			this.showSelected.Size = new System.Drawing.Size(99, 23);
+			this.showSelected.TabIndex = 4;
+			this.showSelected.Text = "Show selected";
+			this.showSelected.UseVisualStyleBackColor = true;
+			this.showSelected.Click += new System.EventHandler(this.ShowSelected_Click);
 			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem});
+            this.newToolStripMenuItem,
+            this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(982, 24);
@@ -95,22 +98,22 @@ namespace pr1
             this.teacherToolStripMenuItem,
             this.studentToolStripMenuItem});
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-			this.newToolStripMenuItem.Text = "new";
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+			this.newToolStripMenuItem.Text = "New";
 			// 
 			// teacherToolStripMenuItem
 			// 
 			this.teacherToolStripMenuItem.Name = "teacherToolStripMenuItem";
-			this.teacherToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.teacherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.teacherToolStripMenuItem.Text = "teacher";
-			this.teacherToolStripMenuItem.Click += new System.EventHandler(this.teacherToolStripMenuItem_Click);
+			this.teacherToolStripMenuItem.Click += new System.EventHandler(this.TeacherToolStripMenuItem_Click);
 			// 
 			// studentToolStripMenuItem
 			// 
 			this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-			this.studentToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.studentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.studentToolStripMenuItem.Text = "student";
-			this.studentToolStripMenuItem.Click += new System.EventHandler(this.studentToolStripMenuItem_Click);
+			this.studentToolStripMenuItem.Click += new System.EventHandler(this.StudentToolStripMenuItem_Click);
 			// 
 			// StudentdataGridView
 			// 
@@ -120,6 +123,29 @@ namespace pr1
 			this.StudentdataGridView.Size = new System.Drawing.Size(471, 201);
 			this.StudentdataGridView.TabIndex = 8;
 			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "File";
+			// 
+			// saveToolStripMenuItem
+			// 
+			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Text = "Save";
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+			// 
+			// loadToolStripMenuItem
+			// 
+			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+			this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.loadToolStripMenuItem.Text = "Load";
+			this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,7 +153,7 @@ namespace pr1
 			this.ClientSize = new System.Drawing.Size(982, 450);
 			this.Controls.Add(this.StudentdataGridView);
 			this.Controls.Add(this.menuStrip1);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.showSelected);
 			this.Controls.Add(this.CitycomboBox);
 			this.Controls.Add(this.treeView1);
 			this.Controls.Add(this.TeacherdataGridView);
@@ -149,12 +175,15 @@ namespace pr1
 		private System.Windows.Forms.DataGridView TeacherdataGridView;
 		private System.Windows.Forms.TreeView treeView1;
 		private System.Windows.Forms.ComboBox CitycomboBox;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button showSelected;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem teacherToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
 		private System.Windows.Forms.DataGridView StudentdataGridView;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
 	}
 }
 
