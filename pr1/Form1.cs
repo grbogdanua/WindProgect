@@ -238,7 +238,23 @@ namespace pr1
 				}
 			}
 			this.TeacherdataGridView.DataSource = teacherTable;
+			this.TeacherdataGridView.Columns[0].Width = 20;
+			this.TeacherdataGridView.Columns[1].Width = 50;
+			this.TeacherdataGridView.Columns[2].Width = 50;
+			this.TeacherdataGridView.Columns[3].Width = 50;
+			this.TeacherdataGridView.Columns[4].Width = 60;
+			this.TeacherdataGridView.Columns[5].Width = 70;
+			this.TeacherdataGridView.Columns[6].Width = 60;
+			this.TeacherdataGridView.Columns[7].Width = 50;
 			this.StudentdataGridView.DataSource = studentTable;
+			this.StudentdataGridView.Columns[0].Width = 20;
+			this.StudentdataGridView.Columns[1].Width = 50;
+			this.StudentdataGridView.Columns[2].Width = 50;
+			this.StudentdataGridView.Columns[3].Width = 50;
+			this.StudentdataGridView.Columns[4].Width = 60;
+			this.StudentdataGridView.Columns[5].Width = 70;
+			this.StudentdataGridView.Columns[6].Width = 60;
+			this.StudentdataGridView.Columns[7].Width = 50;
 		}
 		private void StudentToolStripMenuItem_Click(object sender, EventArgs e)
 		{

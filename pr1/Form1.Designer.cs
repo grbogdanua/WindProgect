@@ -37,10 +37,10 @@ namespace pr1
 			this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.teacherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.StudentdataGridView = new System.Windows.Forms.DataGridView();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.StudentdataGridView = new System.Windows.Forms.DataGridView();
 			((System.ComponentModel.ISupportInitialize)(this.TeacherdataGridView)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.StudentdataGridView)).BeginInit();
@@ -49,9 +49,9 @@ namespace pr1
 			// TeacherdataGridView
 			// 
 			this.TeacherdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.TeacherdataGridView.Location = new System.Drawing.Point(485, 48);
+			this.TeacherdataGridView.Location = new System.Drawing.Point(363, 48);
 			this.TeacherdataGridView.Name = "TeacherdataGridView";
-			this.TeacherdataGridView.Size = new System.Drawing.Size(471, 182);
+			this.TeacherdataGridView.Size = new System.Drawing.Size(469, 182);
 			this.TeacherdataGridView.TabIndex = 0;
 			// 
 			// treeView1
@@ -65,7 +65,7 @@ namespace pr1
 			// CitycomboBox
 			// 
 			this.CitycomboBox.FormattingEnabled = true;
-			this.CitycomboBox.Location = new System.Drawing.Point(254, 48);
+			this.CitycomboBox.Location = new System.Drawing.Point(188, 48);
 			this.CitycomboBox.Name = "CitycomboBox";
 			this.CitycomboBox.Size = new System.Drawing.Size(169, 21);
 			this.CitycomboBox.TabIndex = 3;
@@ -73,7 +73,7 @@ namespace pr1
 			// 
 			// showSelected
 			// 
-			this.showSelected.Location = new System.Drawing.Point(254, 94);
+			this.showSelected.Location = new System.Drawing.Point(188, 94);
 			this.showSelected.Name = "showSelected";
 			this.showSelected.Size = new System.Drawing.Size(99, 23);
 			this.showSelected.TabIndex = 4;
@@ -88,7 +88,7 @@ namespace pr1
             this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(982, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(844, 24);
 			this.menuStrip1.TabIndex = 7;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -104,24 +104,16 @@ namespace pr1
 			// teacherToolStripMenuItem
 			// 
 			this.teacherToolStripMenuItem.Name = "teacherToolStripMenuItem";
-			this.teacherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.teacherToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
 			this.teacherToolStripMenuItem.Text = "teacher";
 			this.teacherToolStripMenuItem.Click += new System.EventHandler(this.TeacherToolStripMenuItem_Click);
 			// 
 			// studentToolStripMenuItem
 			// 
 			this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-			this.studentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.studentToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
 			this.studentToolStripMenuItem.Text = "student";
 			this.studentToolStripMenuItem.Click += new System.EventHandler(this.StudentToolStripMenuItem_Click);
-			// 
-			// StudentdataGridView
-			// 
-			this.StudentdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.StudentdataGridView.Location = new System.Drawing.Point(485, 237);
-			this.StudentdataGridView.Name = "StudentdataGridView";
-			this.StudentdataGridView.Size = new System.Drawing.Size(471, 201);
-			this.StudentdataGridView.TabIndex = 8;
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -135,22 +127,30 @@ namespace pr1
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// loadToolStripMenuItem
 			// 
 			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-			this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
 			this.loadToolStripMenuItem.Text = "Load";
 			this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+			// 
+			// StudentdataGridView
+			// 
+			this.StudentdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.StudentdataGridView.Location = new System.Drawing.Point(363, 237);
+			this.StudentdataGridView.Name = "StudentdataGridView";
+			this.StudentdataGridView.Size = new System.Drawing.Size(469, 201);
+			this.StudentdataGridView.TabIndex = 8;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(982, 450);
+			this.ClientSize = new System.Drawing.Size(844, 450);
 			this.Controls.Add(this.StudentdataGridView);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.showSelected);
