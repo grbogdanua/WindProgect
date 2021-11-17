@@ -17,14 +17,10 @@ namespace pr1
 		public TeacherList TeacherList { get; private set; } = new TeacherList();
 		private AddStudent addStudent = new AddStudent();
 		private AddTeacher addTeacher = new AddTeacher();
-		private DataTable teacherTable = new DataTable();
-		private DataTable studentTable = new DataTable();
 		//public static DirectoryInfo di;
 		public Form1()
 		{
 			//di = Directory.CreateDirectory("Files\\Image");
-			InitializeTeacherTable();
-			InitializeStudentTable();
 			//InitializeList();
 			//CreateList();
 			InitializeComponent();
@@ -34,30 +30,7 @@ namespace pr1
 			addStudent.createstudentEvent += ConectStudentToTeacher;
 			addTeacher.createteacherEvent += OnAddTeacher;
 		}
-		private void InitializeTeacherTable()
-		{
-			teacherTable.Columns.Add("Id");
-			teacherTable.Columns.Add("Surname");
-			teacherTable.Columns.Add("Name");
-			teacherTable.Columns.Add("Age");
-			teacherTable.Columns.Add("Count Students");
-			teacherTable.Columns.Add("City");
-			teacherTable.Columns.Add("Strit");
-			teacherTable.Columns.Add("House Number");
-			teacherTable.Columns.Add("");
-		}
-		private void InitializeStudentTable()
-		{
-			studentTable.Columns.Add("Id");
-			studentTable.Columns.Add("Surname");
-			studentTable.Columns.Add("Name");
-			studentTable.Columns.Add("Age");
-			studentTable.Columns.Add("Mark");
-			studentTable.Columns.Add("City");
-			studentTable.Columns.Add("Strit");
-			studentTable.Columns.Add("House Number");
-			studentTable.Columns.Add("");
-		}
+		
 		private void Form1_Load(object sender, EventArgs e)
 		{
 
@@ -196,32 +169,30 @@ namespace pr1
 			if (activeNode.Tag is Teacher)
 			{
 				var teacher = (Teacher)activeNode.Tag;
-				teacherTable.Rows.Add(teacherTable.Rows.Count + 1,
+				/*teacherTable.Rows.Add(teacherTable.Rows.Count + 1,
 					teacher.Surname,
 					teacher.Name,
 					teacher.Age,
 					teacher.Students.Count,
 					teacher.HumanAddress.City,
 					teacher.HumanAddress.Street,
-					teacher.HumanAddress.Housenumber,teacher);
+					teacher.HumanAddress.Housenumber,teacher);*/
 			}
 			else if (activeNode.Tag is Student)
 			{
 				var student = (Student)activeNode.Tag;
-				studentTable.Rows.Add(studentTable.Rows.Count + 1,
+				/*studentTable.Rows.Add(studentTable.Rows.Count + 1,
 					student.Surname,
 					student.Name,
 					student.Age,
 					student.Grade.AverageMark,
 					student.HumanAddress.City,
 					student.HumanAddress.Street,
-					student.HumanAddress.Housenumber,student);
+					student.HumanAddress.Housenumber,student);*/
 			}
 		}
 		private void ShowSelected_Click(object sender, EventArgs e)
 		{
-			teacherTable.Rows.Clear();
-			studentTable.Rows.Clear();
 			for (int i = 0; i < treeView1.Nodes.Count; i++)
 			{
 				var curentNode = treeView1.Nodes[i];
@@ -240,7 +211,7 @@ namespace pr1
 					}
 				}
 			}
-			this.TeacherdataGridView.DataSource = teacherTable;
+			/*this.TeacherdataGridView.DataSource = teacherTable;
 			this.TeacherdataGridView.Columns[0].Width = 20;
 			this.TeacherdataGridView.Columns[1].Width = 50;
 			this.TeacherdataGridView.Columns[2].Width = 50;
@@ -259,7 +230,7 @@ namespace pr1
 			this.StudentdataGridView.Columns[5].Width = 70;
 			this.StudentdataGridView.Columns[6].Width = 60;
 			this.StudentdataGridView.Columns[7].Width = 50;
-			this.StudentdataGridView.Columns[8].Visible = false;
+			this.StudentdataGridView.Columns[8].Visible = false;*/
 		}
 		private void StudentToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -345,28 +316,6 @@ namespace pr1
 				}
 				InitializeComboBox();
 			}
-		}
-
-		private void TeacherdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-		{
-			var teacher = (Teacher)this.TeacherdataGridView.Rows[e.RowIndex].Cells[8].Value;
-			ShowFoto(teacher.ImageAddress);
-		}
-
-		private void StudentdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-		{
-			var student = (Student)this.StudentdataGridView.Rows[e.RowIndex].Cells[8].Value;
-			ShowFoto(student.ImageAddress);
-		}
-
-		private void TeacherdataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-		{
-
-		}
-
-		private void StudentdataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-		{
-
 		}
 
 		private void ShowFoto(string addressFoto)

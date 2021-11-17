@@ -30,7 +30,6 @@ namespace pr1
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-			this.TeacherdataGridView = new System.Windows.Forms.DataGridView();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.CitycomboBox = new System.Windows.Forms.ComboBox();
 			this.showSelected = new System.Windows.Forms.Button();
@@ -41,23 +40,28 @@ namespace pr1
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.StudentdataGridView = new System.Windows.Forms.DataGridView();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			((System.ComponentModel.ISupportInitialize)(this.TeacherdataGridView)).BeginInit();
+			this.teacherListView = new System.Windows.Forms.ListView();
+			this.TeacherID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.TeacherSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.TeacherName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.TeacherAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.TeacherCountStudents = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.TeacherCity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.TeacherStrit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.TeacherHouseNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.studentListView = new System.Windows.Forms.ListView();
+			this.StudentID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.StudentSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.StudentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.StudentAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.StudentMark = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.StudentCity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.StudentStrit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.StudentHouseNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.menuStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.StudentdataGridView)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// TeacherdataGridView
-			// 
-			this.TeacherdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.TeacherdataGridView.Location = new System.Drawing.Point(363, 48);
-			this.TeacherdataGridView.Name = "TeacherdataGridView";
-			this.TeacherdataGridView.Size = new System.Drawing.Size(469, 182);
-			this.TeacherdataGridView.TabIndex = 0;
-			this.TeacherdataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeacherdataGridView_CellClick);
-			this.TeacherdataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeacherdataGridView_CellDoubleClick);
 			// 
 			// treeView1
 			// 
@@ -143,16 +147,6 @@ namespace pr1
 			this.loadToolStripMenuItem.Text = "Load";
 			this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
 			// 
-			// StudentdataGridView
-			// 
-			this.StudentdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.StudentdataGridView.Location = new System.Drawing.Point(363, 237);
-			this.StudentdataGridView.Name = "StudentdataGridView";
-			this.StudentdataGridView.Size = new System.Drawing.Size(469, 201);
-			this.StudentdataGridView.TabIndex = 8;
-			this.StudentdataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentdataGridView_CellClick);
-			this.StudentdataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentdataGridView_CellDoubleClick);
-			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
@@ -164,26 +158,124 @@ namespace pr1
 			this.pictureBox1.TabIndex = 9;
 			this.pictureBox1.TabStop = false;
 			// 
+			// teacherListView
+			// 
+			this.teacherListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.TeacherID,
+            this.TeacherSurname,
+            this.TeacherName,
+            this.TeacherAge,
+            this.TeacherCountStudents,
+            this.TeacherCity,
+            this.TeacherStrit,
+            this.TeacherHouseNumber});
+			this.teacherListView.HideSelection = false;
+			this.teacherListView.Location = new System.Drawing.Point(363, 48);
+			this.teacherListView.Name = "teacherListView";
+			this.teacherListView.Size = new System.Drawing.Size(469, 190);
+			this.teacherListView.TabIndex = 10;
+			this.teacherListView.UseCompatibleStateImageBehavior = false;
+			// 
+			// TeacherID
+			// 
+			this.TeacherID.Text = "ID";
+			// 
+			// TeacherSurname
+			// 
+			this.TeacherSurname.Text = "Surname";
+			// 
+			// TeacherName
+			// 
+			this.TeacherName.Text = "Name";
+			// 
+			// TeacherAge
+			// 
+			this.TeacherAge.Text = "Age";
+			// 
+			// TeacherCountStudents
+			// 
+			this.TeacherCountStudents.Text = "Count Students";
+			// 
+			// TeacherCity
+			// 
+			this.TeacherCity.Text = "City";
+			// 
+			// TeacherStrit
+			// 
+			this.TeacherStrit.Text = "Strit";
+			// 
+			// TeacherHouseNumber
+			// 
+			this.TeacherHouseNumber.Text = "House Number";
+			// 
+			// studentListView
+			// 
+			this.studentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.StudentID,
+            this.StudentSurname,
+            this.StudentName,
+            this.StudentAge,
+            this.StudentMark,
+            this.StudentCity,
+            this.StudentStrit,
+            this.StudentHouseNumber});
+			this.studentListView.HideSelection = false;
+			this.studentListView.Location = new System.Drawing.Point(364, 244);
+			this.studentListView.Name = "studentListView";
+			this.studentListView.Size = new System.Drawing.Size(468, 193);
+			this.studentListView.TabIndex = 11;
+			this.studentListView.UseCompatibleStateImageBehavior = false;
+			// 
+			// StudentID
+			// 
+			this.StudentID.Text = "ID";
+			// 
+			// StudentSurname
+			// 
+			this.StudentSurname.Text = "Surname";
+			// 
+			// StudentName
+			// 
+			this.StudentName.Text = "Name";
+			// 
+			// StudentAge
+			// 
+			this.StudentAge.Text = "Age";
+			// 
+			// StudentMark
+			// 
+			this.StudentMark.Text = "Mark";
+			// 
+			// StudentCity
+			// 
+			this.StudentCity.Text = "City";
+			// 
+			// StudentStrit
+			// 
+			this.StudentStrit.Text = "Strit";
+			// 
+			// StudentHouseNumber
+			// 
+			this.StudentHouseNumber.Text = "HouseNumber";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(844, 450);
+			this.Controls.Add(this.studentListView);
+			this.Controls.Add(this.teacherListView);
 			this.Controls.Add(this.pictureBox1);
-			this.Controls.Add(this.StudentdataGridView);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.showSelected);
 			this.Controls.Add(this.CitycomboBox);
 			this.Controls.Add(this.treeView1);
-			this.Controls.Add(this.TeacherdataGridView);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
-			((System.ComponentModel.ISupportInitialize)(this.TeacherdataGridView)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.StudentdataGridView)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -191,8 +283,6 @@ namespace pr1
 		}
 
 		#endregion
-
-		private System.Windows.Forms.DataGridView TeacherdataGridView;
 		private System.Windows.Forms.TreeView treeView1;
 		private System.Windows.Forms.ComboBox CitycomboBox;
 		private System.Windows.Forms.Button showSelected;
@@ -200,11 +290,28 @@ namespace pr1
 		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem teacherToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
-		private System.Windows.Forms.DataGridView StudentdataGridView;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
 		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.ListView teacherListView;
+		private System.Windows.Forms.ListView studentListView;
+		private System.Windows.Forms.ColumnHeader TeacherID;
+		private System.Windows.Forms.ColumnHeader TeacherSurname;
+		private System.Windows.Forms.ColumnHeader TeacherName;
+		private System.Windows.Forms.ColumnHeader TeacherAge;
+		private System.Windows.Forms.ColumnHeader TeacherCountStudents;
+		private System.Windows.Forms.ColumnHeader TeacherCity;
+		private System.Windows.Forms.ColumnHeader TeacherStrit;
+		private System.Windows.Forms.ColumnHeader TeacherHouseNumber;
+		private System.Windows.Forms.ColumnHeader StudentID;
+		private System.Windows.Forms.ColumnHeader StudentSurname;
+		private System.Windows.Forms.ColumnHeader StudentName;
+		private System.Windows.Forms.ColumnHeader StudentAge;
+		private System.Windows.Forms.ColumnHeader StudentMark;
+		private System.Windows.Forms.ColumnHeader StudentCity;
+		private System.Windows.Forms.ColumnHeader StudentStrit;
+		private System.Windows.Forms.ColumnHeader StudentHouseNumber;
 	}
 }
 
