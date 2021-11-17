@@ -12,6 +12,7 @@ namespace pr1
 		public string Surname { get; set; }
 		public int Age { get; set; }
 		public Address HumanAddress { get; set; }
+		public string ImageAddress { get; set; }
 
 		public Human(string name, string surname, int age, Address address)
 		{

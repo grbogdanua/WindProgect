@@ -51,6 +51,10 @@ namespace pr1
 			this.SaveAndHideButton = new System.Windows.Forms.Button();
 			this.randomize = new System.Windows.Forms.Button();
 			this.saveButton = new System.Windows.Forms.Button();
+			this.addImageButton = new System.Windows.Forms.Button();
+			this.teacherPictureBox = new System.Windows.Forms.PictureBox();
+			this.FileDialog = new System.Windows.Forms.OpenFileDialog();
+			((System.ComponentModel.ISupportInitialize)(this.teacherPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// TeacherHousenumberTextBox
@@ -221,7 +225,7 @@ namespace pr1
 			// 
 			// randomize
 			// 
-			this.randomize.Location = new System.Drawing.Point(338, 277);
+			this.randomize.Location = new System.Drawing.Point(291, 287);
 			this.randomize.Name = "randomize";
 			this.randomize.Size = new System.Drawing.Size(75, 23);
 			this.randomize.TabIndex = 41;
@@ -239,11 +243,37 @@ namespace pr1
 			this.saveButton.UseVisualStyleBackColor = true;
 			this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
 			// 
+			// addImageButton
+			// 
+			this.addImageButton.Location = new System.Drawing.Point(372, 287);
+			this.addImageButton.Name = "addImageButton";
+			this.addImageButton.Size = new System.Drawing.Size(75, 23);
+			this.addImageButton.TabIndex = 43;
+			this.addImageButton.Text = "Add Image";
+			this.addImageButton.UseVisualStyleBackColor = true;
+			this.addImageButton.Click += new System.EventHandler(this.addImageButton_Click);
+			// 
+			// teacherPictureBox
+			// 
+			this.teacherPictureBox.Location = new System.Drawing.Point(549, 65);
+			this.teacherPictureBox.Name = "teacherPictureBox";
+			this.teacherPictureBox.Size = new System.Drawing.Size(209, 265);
+			this.teacherPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.teacherPictureBox.TabIndex = 44;
+			this.teacherPictureBox.TabStop = false;
+			// 
+			// FileDialog
+			// 
+			this.FileDialog.Filter = "jpg files (*.jpg)|*.jpg";
+			this.FileDialog.Title = "Image";
+			// 
 			// AddTeacher
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.teacherPictureBox);
+			this.Controls.Add(this.addImageButton);
 			this.Controls.Add(this.saveButton);
 			this.Controls.Add(this.randomize);
 			this.Controls.Add(this.TeacherHousenumberTextBox);
@@ -268,6 +298,8 @@ namespace pr1
 			this.Controls.Add(this.SaveAndHideButton);
 			this.Name = "AddTeacher";
 			this.Text = "AddTeacher";
+			this.Shown += new System.EventHandler(this.AddTeacher_Shown);
+			((System.ComponentModel.ISupportInitialize)(this.teacherPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -297,5 +329,8 @@ namespace pr1
 		private System.Windows.Forms.Button SaveAndHideButton;
 		private System.Windows.Forms.Button randomize;
 		private System.Windows.Forms.Button saveButton;
+		private System.Windows.Forms.Button addImageButton;
+		private System.Windows.Forms.PictureBox teacherPictureBox;
+		private System.Windows.Forms.OpenFileDialog FileDialog;
 	}
 }

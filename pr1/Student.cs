@@ -11,11 +11,12 @@ namespace pr1
 	public class Student : Human
 	{
 		public Mark Grade { get; set; }
-		public Student(string name, string surname, int age, Address address, Mark mark)
+		public Student(string name, string surname, int age, string imageAddress, Address address, Mark mark)
 		{
 			Name = name;
 			Surname = surname;
 			Age = age;
+			ImageAddress = imageAddress;
 			HumanAddress = address;
 			Grade = mark;
 		}

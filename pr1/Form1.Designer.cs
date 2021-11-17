@@ -29,6 +29,7 @@ namespace pr1
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.TeacherdataGridView = new System.Windows.Forms.DataGridView();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.CitycomboBox = new System.Windows.Forms.ComboBox();
@@ -41,9 +42,11 @@ namespace pr1
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.StudentdataGridView = new System.Windows.Forms.DataGridView();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.TeacherdataGridView)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.StudentdataGridView)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// TeacherdataGridView
@@ -53,6 +56,8 @@ namespace pr1
 			this.TeacherdataGridView.Name = "TeacherdataGridView";
 			this.TeacherdataGridView.Size = new System.Drawing.Size(469, 182);
 			this.TeacherdataGridView.TabIndex = 0;
+			this.TeacherdataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeacherdataGridView_CellClick);
+			this.TeacherdataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeacherdataGridView_CellDoubleClick);
 			// 
 			// treeView1
 			// 
@@ -145,12 +150,26 @@ namespace pr1
 			this.StudentdataGridView.Name = "StudentdataGridView";
 			this.StudentdataGridView.Size = new System.Drawing.Size(469, 201);
 			this.StudentdataGridView.TabIndex = 8;
+			this.StudentdataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentdataGridView_CellClick);
+			this.StudentdataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentdataGridView_CellDoubleClick);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
+			this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+			this.pictureBox1.Location = new System.Drawing.Point(189, 214);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(168, 224);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox1.TabIndex = 9;
+			this.pictureBox1.TabStop = false;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(844, 450);
+			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.StudentdataGridView);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.showSelected);
@@ -165,6 +184,7 @@ namespace pr1
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.StudentdataGridView)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -184,6 +204,7 @@ namespace pr1
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }
 

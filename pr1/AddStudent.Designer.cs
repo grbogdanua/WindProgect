@@ -52,11 +52,15 @@ namespace pr1
 			this.TeachergroupBox = new System.Windows.Forms.GroupBox();
 			this.randomize = new System.Windows.Forms.Button();
 			this.saveButton = new System.Windows.Forms.Button();
+			this.studentPictureBox = new System.Windows.Forms.PictureBox();
+			this.addImageButton = new System.Windows.Forms.Button();
+			this.FileDialog = new System.Windows.Forms.OpenFileDialog();
+			((System.ComponentModel.ISupportInitialize)(this.studentPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// saveAndHideButton
 			// 
-			this.saveAndHideButton.Location = new System.Drawing.Point(224, 379);
+			this.saveAndHideButton.Location = new System.Drawing.Point(169, 395);
 			this.saveAndHideButton.Name = "saveAndHideButton";
 			this.saveAndHideButton.Size = new System.Drawing.Size(98, 23);
 			this.saveAndHideButton.TabIndex = 0;
@@ -66,7 +70,7 @@ namespace pr1
 			// 
 			// CanselButton
 			// 
-			this.CanselButton.Location = new System.Drawing.Point(485, 350);
+			this.CanselButton.Location = new System.Drawing.Point(430, 366);
 			this.CanselButton.Name = "CanselButton";
 			this.CanselButton.Size = new System.Drawing.Size(75, 23);
 			this.CanselButton.TabIndex = 1;
@@ -222,16 +226,16 @@ namespace pr1
 			// 
 			// TeachergroupBox
 			// 
-			this.TeachergroupBox.Location = new System.Drawing.Point(524, 35);
+			this.TeachergroupBox.Location = new System.Drawing.Point(452, 51);
 			this.TeachergroupBox.Name = "TeachergroupBox";
-			this.TeachergroupBox.Size = new System.Drawing.Size(231, 289);
+			this.TeachergroupBox.Size = new System.Drawing.Size(96, 268);
 			this.TeachergroupBox.TabIndex = 21;
 			this.TeachergroupBox.TabStop = false;
 			this.TeachergroupBox.Text = "Teachers";
 			// 
 			// randomize
 			// 
-			this.randomize.Location = new System.Drawing.Point(371, 301);
+			this.randomize.Location = new System.Drawing.Point(274, 325);
 			this.randomize.Name = "randomize";
 			this.randomize.Size = new System.Drawing.Size(75, 23);
 			this.randomize.TabIndex = 22;
@@ -241,7 +245,7 @@ namespace pr1
 			// 
 			// saveButton
 			// 
-			this.saveButton.Location = new System.Drawing.Point(224, 350);
+			this.saveButton.Location = new System.Drawing.Point(169, 366);
 			this.saveButton.Name = "saveButton";
 			this.saveButton.Size = new System.Drawing.Size(98, 23);
 			this.saveButton.TabIndex = 23;
@@ -249,11 +253,37 @@ namespace pr1
 			this.saveButton.UseVisualStyleBackColor = true;
 			this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
 			// 
+			// studentPictureBox
+			// 
+			this.studentPictureBox.Location = new System.Drawing.Point(555, 52);
+			this.studentPictureBox.Name = "studentPictureBox";
+			this.studentPictureBox.Size = new System.Drawing.Size(207, 267);
+			this.studentPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.studentPictureBox.TabIndex = 24;
+			this.studentPictureBox.TabStop = false;
+			// 
+			// addImageButton
+			// 
+			this.addImageButton.Location = new System.Drawing.Point(355, 325);
+			this.addImageButton.Name = "addImageButton";
+			this.addImageButton.Size = new System.Drawing.Size(75, 23);
+			this.addImageButton.TabIndex = 44;
+			this.addImageButton.Text = "Add Image";
+			this.addImageButton.UseVisualStyleBackColor = true;
+			this.addImageButton.Click += new System.EventHandler(this.addImageButton_Click);
+			// 
+			// FileDialog
+			// 
+			this.FileDialog.Filter = "jpg files (*.jpg)|*.jpg";
+			this.FileDialog.Title = "Image";
+			// 
 			// AddStudent
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(815, 450);
+			this.Controls.Add(this.addImageButton);
+			this.Controls.Add(this.studentPictureBox);
 			this.Controls.Add(this.saveButton);
 			this.Controls.Add(this.randomize);
 			this.Controls.Add(this.TeachergroupBox);
@@ -281,6 +311,7 @@ namespace pr1
 			this.Text = "AddStudent";
 			this.Load += new System.EventHandler(this.AddStudent_Load);
 			this.Shown += new System.EventHandler(this.AddStudent_Shown);
+			((System.ComponentModel.ISupportInitialize)(this.studentPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -311,5 +342,8 @@ namespace pr1
 		private System.Windows.Forms.GroupBox TeachergroupBox;
 		private System.Windows.Forms.Button randomize;
 		private System.Windows.Forms.Button saveButton;
+		private System.Windows.Forms.PictureBox studentPictureBox;
+		private System.Windows.Forms.Button addImageButton;
+		private System.Windows.Forms.OpenFileDialog FileDialog;
 	}
 }

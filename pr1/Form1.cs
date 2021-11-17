@@ -19,11 +19,12 @@ namespace pr1
 		private AddTeacher addTeacher = new AddTeacher();
 		private DataTable teacherTable = new DataTable();
 		private DataTable studentTable = new DataTable();
+		//public static DirectoryInfo di;
 		public Form1()
 		{
+			//di = Directory.CreateDirectory("Files\\Image");
 			InitializeTeacherTable();
 			InitializeStudentTable();
-			addStudent.TeacherList = TeacherList;
 			//InitializeList();
 			//CreateList();
 			InitializeComponent();
@@ -42,7 +43,8 @@ namespace pr1
 			teacherTable.Columns.Add("Count Students");
 			teacherTable.Columns.Add("City");
 			teacherTable.Columns.Add("Strit");
-			teacherTable.Columns.Add("House Bumber");
+			teacherTable.Columns.Add("House Number");
+			teacherTable.Columns.Add("");
 		}
 		private void InitializeStudentTable()
 		{
@@ -53,13 +55,14 @@ namespace pr1
 			studentTable.Columns.Add("Mark");
 			studentTable.Columns.Add("City");
 			studentTable.Columns.Add("Strit");
-			studentTable.Columns.Add("House Bumber");
+			studentTable.Columns.Add("House Number");
+			studentTable.Columns.Add("");
 		}
 		private void Form1_Load(object sender, EventArgs e)
 		{
 
 		}
-		private void InitializeList()
+		/*private void InitializeList()
 		{
 			Teacher teacher = new Teacher("Arison", "Dad", 30, new Address("Ukraine", "Kherson", "Kahovka", "Armanska", 156));
 			teacher.AddStudent(new Student("David", "Forida", 19, new Address("Ukraine", "Kherson", "Nova Odesa", "Kolomia", 204), new Mark()));
@@ -70,7 +73,7 @@ namespace pr1
 			teacher.AddStudent(new Student("Frdor", "Hotica", 12, new Address("Ukraine", "Kherson", "Nova Odesa", "Kahovka", 205), new Mark()));
 			TeacherList.AddTeacher(teacher);
 		}
-		/*private void initialeDataTanle()
+		private void initialeDataTanle()
 		{
 			DataTable table = new DataTable();
 			table.Columns.Add("id");
@@ -181,12 +184,12 @@ namespace pr1
 		{
 			List<string> cites = new List<string> { };
 			ListCites(out cites);
+			this.CitycomboBox.Items.Clear();
 			for(int i = 0; i < cites.Count(); i++)
 			{
 				this.CitycomboBox.Items.Add(cites[i]);
 			}
 			this.CitycomboBox.Items.Add("All");
-
 		}
 		private void AddToTable(TreeNode activeNode)
 		{
@@ -200,7 +203,7 @@ namespace pr1
 					teacher.Students.Count,
 					teacher.HumanAddress.City,
 					teacher.HumanAddress.Street,
-					teacher.HumanAddress.Housenumber);
+					teacher.HumanAddress.Housenumber,teacher);
 			}
 			else if (activeNode.Tag is Student)
 			{
@@ -212,7 +215,7 @@ namespace pr1
 					student.Grade.AverageMark,
 					student.HumanAddress.City,
 					student.HumanAddress.Street,
-					student.HumanAddress.Housenumber);
+					student.HumanAddress.Housenumber,student);
 			}
 		}
 		private void ShowSelected_Click(object sender, EventArgs e)
@@ -246,6 +249,7 @@ namespace pr1
 			this.TeacherdataGridView.Columns[5].Width = 70;
 			this.TeacherdataGridView.Columns[6].Width = 60;
 			this.TeacherdataGridView.Columns[7].Width = 50;
+			this.TeacherdataGridView.Columns[8].Visible = false;
 			this.StudentdataGridView.DataSource = studentTable;
 			this.StudentdataGridView.Columns[0].Width = 20;
 			this.StudentdataGridView.Columns[1].Width = 50;
@@ -255,9 +259,11 @@ namespace pr1
 			this.StudentdataGridView.Columns[5].Width = 70;
 			this.StudentdataGridView.Columns[6].Width = 60;
 			this.StudentdataGridView.Columns[7].Width = 50;
+			this.StudentdataGridView.Columns[8].Visible = false;
 		}
 		private void StudentToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			addStudent.TeacherList = TeacherList;
 			addStudent.Show();
 		}
 
@@ -273,6 +279,7 @@ namespace pr1
 				{
 					TeacherList.Teachers[i].Students.Add(student);
 					InitializeTree(null);
+					InitializeComboBox();
 					break;
 				}
 			}
@@ -281,6 +288,7 @@ namespace pr1
 		{
 			TeacherList.Teachers.Add(teacher);
 			InitializeTree(null);
+			InitializeComboBox();
 		}
 
 		private void CitycomboBox_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -335,6 +343,41 @@ namespace pr1
 				{
 					MessageBox.Show(ex.Message);
 				}
+				InitializeComboBox();
+			}
+		}
+
+		private void TeacherdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			var teacher = (Teacher)this.TeacherdataGridView.Rows[e.RowIndex].Cells[8].Value;
+			ShowFoto(teacher.ImageAddress);
+		}
+
+		private void StudentdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			var student = (Student)this.StudentdataGridView.Rows[e.RowIndex].Cells[8].Value;
+			ShowFoto(student.ImageAddress);
+		}
+
+		private void TeacherdataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void StudentdataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void ShowFoto(string addressFoto)
+		{
+			if (addressFoto != String.Empty)
+			{
+				this.pictureBox1.Image = Image.FromFile(addressFoto);
+			}
+			else
+			{
+				this.pictureBox1.Image = this.pictureBox1.ErrorImage;
 			}
 		}
 	}

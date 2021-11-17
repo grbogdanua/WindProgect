@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,9 @@ namespace pr1
 		public RadioButton teacher = null; 
 		public delegate void createstudent(Student student, Teacher teacher);
 		public event createstudent createstudentEvent;
+		public string curentImageAddress;
+		public string imageAddress;
+		public static DirectoryInfo di;
 		public TeacherList TeacherList { get; set; }
 
 		public AddStudent()
@@ -31,10 +35,10 @@ namespace pr1
 			bool TextBoxIsFilled = this.StudentAgeTextBox.Text != String.Empty || this.StudentNameTextBox.Text != String.Empty || this.StudentSernameTextBox.Text != String.Empty || this.StudentCountryTextBox.Text != String.Empty || this.StudentDistrictTextBox.Text != String.Empty || this.StudentCityTextBox.Text != String.Empty || this.StudentStreetTextBox.Text != String.Empty || this.StudentHousenumberTextBox.Text != String.Empty;
 			int Age = 0;
 			int Housenumber = 0;
-			if (TextBoxIsFilled == true && teacher != null && int.TryParse(this.StudentHousenumberTextBox.Text,out Housenumber) && int.TryParse(this.StudentAgeTextBox.Text, out Age))
+			if (curentImageAddress != String.Empty && TextBoxIsFilled == true && teacher != null && int.TryParse(this.StudentHousenumberTextBox.Text,out Housenumber) && int.TryParse(this.StudentAgeTextBox.Text, out Age))
 			{
-
-				Student student = new Student(this.StudentNameTextBox.Text, this.StudentSernameTextBox.Text, Age, new Address(this.StudentCountryTextBox.Text, this.StudentDistrictTextBox.Text, this.StudentCityTextBox.Text, this.StudentStreetTextBox.Text, Housenumber),new Mark());
+				Copy();
+				Student student = new Student(this.StudentNameTextBox.Text, this.StudentSernameTextBox.Text, Age, imageAddress, new Address(this.StudentCountryTextBox.Text, this.StudentDistrictTextBox.Text, this.StudentCityTextBox.Text, this.StudentStreetTextBox.Text, Housenumber),new Mark());
 				createstudentEvent?.Invoke(student, (Teacher)teacher.Tag);
 				this.Hide();
 			}
@@ -94,15 +98,42 @@ namespace pr1
 			bool TextBoxIsFilled = this.StudentAgeTextBox.Text != String.Empty || this.StudentNameTextBox.Text != String.Empty || this.StudentSernameTextBox.Text != String.Empty || this.StudentCountryTextBox.Text != String.Empty || this.StudentDistrictTextBox.Text != String.Empty || this.StudentCityTextBox.Text != String.Empty || this.StudentStreetTextBox.Text != String.Empty || this.StudentHousenumberTextBox.Text != String.Empty;
 			int Age = 0;
 			int Housenumber = 0;
-			if (TextBoxIsFilled == true && teacher != null && int.TryParse(this.StudentHousenumberTextBox.Text, out Housenumber) && int.TryParse(this.StudentAgeTextBox.Text, out Age))
+			if (curentImageAddress != String.Empty && TextBoxIsFilled == true && teacher != null && int.TryParse(this.StudentHousenumberTextBox.Text, out Housenumber) && int.TryParse(this.StudentAgeTextBox.Text, out Age))
 			{
-
-				Student student = new Student(this.StudentNameTextBox.Text, this.StudentSernameTextBox.Text, Age, new Address(this.StudentCountryTextBox.Text, this.StudentDistrictTextBox.Text, this.StudentCityTextBox.Text, this.StudentStreetTextBox.Text, Housenumber), new Mark());
+				Copy();
+				Student student = new Student(this.StudentNameTextBox.Text, this.StudentSernameTextBox.Text, Age, imageAddress, new Address(this.StudentCountryTextBox.Text, this.StudentDistrictTextBox.Text, this.StudentCityTextBox.Text, this.StudentStreetTextBox.Text, Housenumber), new Mark());
 				createstudentEvent?.Invoke(student, (Teacher)teacher.Tag);
 			}
 			else
 			{
 				MessageBox.Show("not all fields are filled corect");
+			}
+		}
+		private void Copy()
+		{
+			string[] separator = { "\\" };
+			string[] path = curentImageAddress.Split(separator, StringSplitOptions.None);
+			string imageName = path[path.Length - 1];
+			Random random = new Random();
+			string fileName = Convert.ToString(random.Next(1, 999));
+			while (File.Exists("Files\\Image\\" + fileName + "\\" + imageName))
+			{
+				fileName = Convert.ToString(random.Next(1, 999));
+			}
+			di = Directory.CreateDirectory("Files\\Image\\" + fileName);
+			imageAddress = "Files\\Image\\" + fileName + "\\" + imageName;
+			this.studentPictureBox.Image = Image.FromFile(curentImageAddress);
+			File.Copy(curentImageAddress, imageAddress);
+		}
+		private void addImageButton_Click(object sender, EventArgs e)
+		{
+			DialogResult dr = this.FileDialog.ShowDialog();
+			if (dr == DialogResult.OK)
+			{
+				curentImageAddress = FileDialog.FileName;
+				//MessageBox.Show(curentImage);
+				this.studentPictureBox.Image = Image.FromFile(curentImageAddress);
+				//File.Copy(curentImage, imageAddress);
 			}
 		}
 	}

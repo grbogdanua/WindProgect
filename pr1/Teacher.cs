@@ -13,11 +13,12 @@ namespace pr1
 
 		public List<Student> Students { get; private set; }
 
-		public Teacher(string name, string surname, int age, Address address)
+		public Teacher(string name, string surname, int age, string imageAddress, Address address)
 		{
 			Name = name;
 			Surname = surname;
 			Age = age;
+			ImageAddress = imageAddress;
 			HumanAddress = address;
 			Students = new List<Student> { };
 		}
