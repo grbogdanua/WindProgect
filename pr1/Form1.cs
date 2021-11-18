@@ -20,6 +20,7 @@ namespace pr1
 		//public static DirectoryInfo di;
 		public Form1()
 		{
+			addStudent.TeacherList = TeacherList;
 			//di = Directory.CreateDirectory("Files\\Image");
 			//InitializeList();
 			//CreateList();
@@ -257,7 +258,6 @@ namespace pr1
 		}
 		private void StudentToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			addStudent.TeacherList = TeacherList;
 			addStudent.Show();
 		}
 
@@ -343,24 +343,55 @@ namespace pr1
 
 		private void ShowFoto(string addressFoto)
 		{
-			if (addressFoto != String.Empty)
+			if (addressFoto != null)
 			{
 				this.pictureBox1.Image = Image.FromFile(addressFoto);
 			}
 			else
 			{
-				this.pictureBox1.Image = this.pictureBox1.ErrorImage;
+				this.pictureBox1.Image = Image.FromFile("Files\\Image\\anonym.jpg");
 			}
 		}
 
 		private void ListView_MouseClick(object sender, MouseEventArgs e)
 		{
-			
+			MessageBox.Show(sender.GetType().ToString());
+			foreach (ListViewItem item in this.teacherListView.Items)
+			{
+				if (item.Selected)
+				{
+					var teacher = (Teacher)item.Tag;
+					ShowFoto(teacher.ImageAddress);
+				}
+			}
+			foreach (ListViewItem item in this.studentListView.Items)
+			{
+				if (item.Selected)
+				{
+					var student = (Student)item.Tag;
+					ShowFoto(student.ImageAddress);
+				}
+			}
 		}
 
 		private void ListView_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-
+			foreach (ListViewItem item in this.teacherListView.Items)
+			{
+				if (item.Selected)
+				{
+					var teacher = (Teacher)item.Tag;
+					addTeacher.Show();
+				}
+			}
+			foreach (ListViewItem item in this.studentListView.Items)
+			{
+				if (item.Selected)
+				{
+					var student = (Student)item.Tag;
+					addStudent.Show();
+				}
+			}
 		}
 	}
 }

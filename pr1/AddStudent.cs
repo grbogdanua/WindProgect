@@ -91,6 +91,7 @@ namespace pr1
 			this.StudentCityTextBox.Text = string.Empty;
 			this.StudentStreetTextBox.Text = string.Empty;
 			this.StudentHousenumberTextBox.Text = string.Empty;
+			this.studentPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg");
 		}
 
 		private void SaveButton_Click(object sender, EventArgs e)
