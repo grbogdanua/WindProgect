@@ -17,6 +17,7 @@ namespace pr1
 		public TeacherList TeacherList { get; private set; } = new TeacherList();
 		private AddStudent addStudent = new AddStudent();
 		private AddTeacher addTeacher = new AddTeacher();
+		private StudentForm studentForm = new StudentForm();
 		//public static DirectoryInfo di;
 		public Form1()
 		{
@@ -352,44 +353,35 @@ namespace pr1
 				this.pictureBox1.Image = Image.FromFile("Files\\Image\\anonym.jpg");
 			}
 		}
-
 		private void ListView_MouseClick(object sender, MouseEventArgs e)
 		{
-			MessageBox.Show(sender.GetType().ToString());
-			foreach (ListViewItem item in this.teacherListView.Items)
+			var source = sender as ListView;
+			foreach (ListViewItem item in source.Items)
 			{
 				if (item.Selected)
 				{
-					var teacher = (Teacher)item.Tag;
-					ShowFoto(teacher.ImageAddress);
-				}
-			}
-			foreach (ListViewItem item in this.studentListView.Items)
-			{
-				if (item.Selected)
-				{
-					var student = (Student)item.Tag;
-					ShowFoto(student.ImageAddress);
+					var human = (Human)item.Tag;
+					ShowFoto(human.ImageAddress);
 				}
 			}
 		}
-
 		private void ListView_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-			foreach (ListViewItem item in this.teacherListView.Items)
+			var source = sender as ListView;
+			foreach (ListViewItem item in source.Items)
 			{
 				if (item.Selected)
 				{
-					var teacher = (Teacher)item.Tag;
-					addTeacher.Show();
-				}
-			}
-			foreach (ListViewItem item in this.studentListView.Items)
-			{
-				if (item.Selected)
-				{
-					var student = (Student)item.Tag;
-					addStudent.Show();
+					if (item.Tag is Teacher)
+					{
+						var teacher = (Teacher)item.Tag;
+					}else if(item.Tag is Student)
+					{
+						var student = (Student)item.Tag;
+						studentForm.TeacherList = TeacherList;
+						studentForm.Student = student;
+						studentForm.Show();
+					}
 				}
 			}
 		}

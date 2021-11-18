@@ -38,3 +38,4 @@ E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.csproj.CopyComplete
 C:\main\work\C#\pr1\WindProgect\pr1\bin\Debug\Newtonsoft.Json.dll
 C:\main\work\C#\pr1\WindProgect\pr1\bin\Debug\Newtonsoft.Json.xml
 C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.csproj.CopyComplete
+E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.StudentForm.resources
