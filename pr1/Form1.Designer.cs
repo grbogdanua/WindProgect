@@ -66,7 +66,7 @@ namespace pr1
 			// treeView1
 			// 
 			this.treeView1.CheckBoxes = true;
-			this.treeView1.Location = new System.Drawing.Point(12, 48);
+			this.treeView1.Location = new System.Drawing.Point(8, 45);
 			this.treeView1.Name = "treeView1";
 			this.treeView1.Size = new System.Drawing.Size(170, 390);
 			this.treeView1.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace pr1
 			// CitycomboBox
 			// 
 			this.CitycomboBox.FormattingEnabled = true;
-			this.CitycomboBox.Location = new System.Drawing.Point(188, 48);
+			this.CitycomboBox.Location = new System.Drawing.Point(184, 45);
 			this.CitycomboBox.Name = "CitycomboBox";
 			this.CitycomboBox.Size = new System.Drawing.Size(169, 21);
 			this.CitycomboBox.TabIndex = 3;
@@ -82,7 +82,7 @@ namespace pr1
 			// 
 			// showSelected
 			// 
-			this.showSelected.Location = new System.Drawing.Point(188, 94);
+			this.showSelected.Location = new System.Drawing.Point(184, 91);
 			this.showSelected.Name = "showSelected";
 			this.showSelected.Size = new System.Drawing.Size(99, 23);
 			this.showSelected.TabIndex = 4;
@@ -97,7 +97,7 @@ namespace pr1
             this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(844, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(880, 24);
 			this.menuStrip1.TabIndex = 7;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -151,7 +151,7 @@ namespace pr1
 			// 
 			this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
 			this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-			this.pictureBox1.Location = new System.Drawing.Point(189, 214);
+			this.pictureBox1.Location = new System.Drawing.Point(185, 211);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(168, 224);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -169,16 +169,21 @@ namespace pr1
             this.TeacherCity,
             this.TeacherStrit,
             this.TeacherHouseNumber});
+			this.teacherListView.FullRowSelect = true;
 			this.teacherListView.HideSelection = false;
-			this.teacherListView.Location = new System.Drawing.Point(363, 48);
+			this.teacherListView.Location = new System.Drawing.Point(359, 45);
 			this.teacherListView.Name = "teacherListView";
-			this.teacherListView.Size = new System.Drawing.Size(469, 190);
+			this.teacherListView.Size = new System.Drawing.Size(509, 190);
 			this.teacherListView.TabIndex = 10;
 			this.teacherListView.UseCompatibleStateImageBehavior = false;
+			this.teacherListView.View = System.Windows.Forms.View.Details;
+			this.teacherListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseClick);
+			this.teacherListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDoubleClick);
 			// 
 			// TeacherID
 			// 
 			this.TeacherID.Text = "ID";
+			this.TeacherID.Width = 30;
 			// 
 			// TeacherSurname
 			// 
@@ -191,10 +196,12 @@ namespace pr1
 			// TeacherAge
 			// 
 			this.TeacherAge.Text = "Age";
+			this.TeacherAge.Width = 40;
 			// 
 			// TeacherCountStudents
 			// 
 			this.TeacherCountStudents.Text = "Count Students";
+			this.TeacherCountStudents.Width = 100;
 			// 
 			// TeacherCity
 			// 
@@ -207,6 +214,7 @@ namespace pr1
 			// TeacherHouseNumber
 			// 
 			this.TeacherHouseNumber.Text = "House Number";
+			this.TeacherHouseNumber.Width = 100;
 			// 
 			// studentListView
 			// 
@@ -219,16 +227,21 @@ namespace pr1
             this.StudentCity,
             this.StudentStrit,
             this.StudentHouseNumber});
+			this.studentListView.FullRowSelect = true;
 			this.studentListView.HideSelection = false;
-			this.studentListView.Location = new System.Drawing.Point(364, 244);
+			this.studentListView.Location = new System.Drawing.Point(359, 242);
 			this.studentListView.Name = "studentListView";
-			this.studentListView.Size = new System.Drawing.Size(468, 193);
+			this.studentListView.Size = new System.Drawing.Size(509, 193);
 			this.studentListView.TabIndex = 11;
 			this.studentListView.UseCompatibleStateImageBehavior = false;
+			this.studentListView.View = System.Windows.Forms.View.Details;
+			this.studentListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseClick);
+			this.studentListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDoubleClick);
 			// 
 			// StudentID
 			// 
 			this.StudentID.Text = "ID";
+			this.StudentID.Width = 30;
 			// 
 			// StudentSurname
 			// 
@@ -241,6 +254,7 @@ namespace pr1
 			// StudentAge
 			// 
 			this.StudentAge.Text = "Age";
+			this.StudentAge.Width = 40;
 			// 
 			// StudentMark
 			// 
@@ -256,13 +270,14 @@ namespace pr1
 			// 
 			// StudentHouseNumber
 			// 
-			this.StudentHouseNumber.Text = "HouseNumber";
+			this.StudentHouseNumber.Text = "House Number";
+			this.StudentHouseNumber.Width = 100;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(844, 450);
+			this.ClientSize = new System.Drawing.Size(880, 447);
 			this.Controls.Add(this.studentListView);
 			this.Controls.Add(this.teacherListView);
 			this.Controls.Add(this.pictureBox1);

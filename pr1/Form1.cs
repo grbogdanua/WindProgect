@@ -169,6 +169,16 @@ namespace pr1
 			if (activeNode.Tag is Teacher)
 			{
 				var teacher = (Teacher)activeNode.Tag;
+				var teacherRow = new ListViewItem(new[] {(this.teacherListView.Items.Count+1).ToString(),
+					teacher.Surname,
+					teacher.Name,
+					teacher.Age.ToString(),
+					teacher.Students.Count.ToString(),
+					teacher.HumanAddress.City,
+					teacher.HumanAddress.Street,
+					teacher.HumanAddress.Housenumber.ToString()});
+				teacherRow.Tag = teacher;
+				this.teacherListView.Items.Add(teacherRow);
 				/*teacherTable.Rows.Add(teacherTable.Rows.Count + 1,
 					teacher.Surname,
 					teacher.Name,
@@ -181,6 +191,17 @@ namespace pr1
 			else if (activeNode.Tag is Student)
 			{
 				var student = (Student)activeNode.Tag;
+				var studentRow = new ListViewItem(new[] { (studentListView.Items.Count+1).ToString(),
+					student.Surname,
+					student.Name,
+					student.Age.ToString(),
+					student.Grade.AverageMark.ToString(),
+					student.HumanAddress.City,
+					student.HumanAddress.Street,
+					student.HumanAddress.Housenumber.ToString()});
+				studentRow.Tag = student;
+				this.studentListView.Items.Add(studentRow);
+				//this.studentListView.Items.Add(studentRow);
 				/*studentTable.Rows.Add(studentTable.Rows.Count + 1,
 					student.Surname,
 					student.Name,
@@ -193,6 +214,8 @@ namespace pr1
 		}
 		private void ShowSelected_Click(object sender, EventArgs e)
 		{
+			this.studentListView.Items.Clear();
+			this.teacherListView.Items.Clear();
 			for (int i = 0; i < treeView1.Nodes.Count; i++)
 			{
 				var curentNode = treeView1.Nodes[i];
@@ -328,6 +351,16 @@ namespace pr1
 			{
 				this.pictureBox1.Image = this.pictureBox1.ErrorImage;
 			}
+		}
+
+		private void ListView_MouseClick(object sender, MouseEventArgs e)
+		{
+			
+		}
+
+		private void ListView_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+
 		}
 	}
 }
