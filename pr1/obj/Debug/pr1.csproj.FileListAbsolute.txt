@@ -24,7 +24,6 @@ E:\Work\Github\WindProgect\pr1\bin\Debug\pr1.exe.config
 E:\Work\Github\WindProgect\pr1\bin\Debug\pr1.exe
 E:\Work\Github\WindProgect\pr1\bin\Debug\pr1.pdb
 E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.AddStudent.resources
-E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.AddTeacher.resources
 E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.Form1.resources
 E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.Properties.Resources.resources
 E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.csproj.GenerateResource.cache
@@ -39,3 +38,4 @@ C:\main\work\C#\pr1\WindProgect\pr1\bin\Debug\Newtonsoft.Json.dll
 C:\main\work\C#\pr1\WindProgect\pr1\bin\Debug\Newtonsoft.Json.xml
 C:\main\work\C#\pr1\WindProgect\pr1\obj\Debug\pr1.csproj.CopyComplete
 E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.StudentForm.resources
+E:\Work\Github\WindProgect\pr1\obj\Debug\pr1.TeacherForm.resources

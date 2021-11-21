@@ -249,7 +249,7 @@ namespace pr1
 			this.saveButton.Name = "saveButton";
 			this.saveButton.Size = new System.Drawing.Size(98, 23);
 			this.saveButton.TabIndex = 23;
-			this.saveButton.Text = "Save";
+			this.saveButton.Text = "Add";
 			this.saveButton.UseVisualStyleBackColor = true;
 			this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
 			// 
@@ -311,6 +311,7 @@ namespace pr1
 			this.Text = "AddStudent";
 			this.Load += new System.EventHandler(this.AddStudent_Load);
 			this.Shown += new System.EventHandler(this.AddStudent_Shown);
+			this.VisibleChanged += new System.EventHandler(this.AddStudent_Shown);
 			((System.ComponentModel.ISupportInitialize)(this.studentPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

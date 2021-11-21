@@ -13,15 +13,30 @@ namespace pr1
 {
 	public partial class StudentForm : Form
 	{
-		public RadioButton teacher = null;
-		public delegate void createstudent(Student student, Teacher teacher);
+		public Teacher selectedTeacher = null;
+		public delegate void createstudent();
 		public event createstudent createstudentEvent;
 		public string curentImageAddress;
 		public string imageAddress;
 		public static DirectoryInfo di;
 		private static string pathImage = "Files\\Image\\";
-		public TeacherList TeacherList { get; set; }
-		public Student Student { get; set; }
+		private TeacherList _curentTeacherList;
+		public TeacherList TeacherList
+		{
+			set
+			{
+				_curentTeacherList = value;
+				TeacherListApdated();
+			}
+		}
+		private Student _currentStudent;
+		public Student Student { 
+			set
+			{
+				_currentStudent = value;
+				StudentApdated();
+			}
+				}
 
 		public StudentForm()
 		{
@@ -30,7 +45,7 @@ namespace pr1
 		private void radioButton_CheckedChanged(object sender, EventArgs e)
 		{
 			RadioButton radioButton = (RadioButton)sender;
-			teacher = radioButton;
+			selectedTeacher = (Teacher)radioButton.Tag;
 		}
 		private void SaveChengesButton_Click(object sender, EventArgs e)
 		{
@@ -46,58 +61,85 @@ namespace pr1
 			int Housenumber = 0;
 			if (curentImageAddress != String.Empty &&
 				TextBoxIsFilled == true &&
-				teacher != null &&
+				selectedTeacher != null &&
 				int.TryParse(this.StudentHousenumberTextBox.Text, out Housenumber) &&
 				int.TryParse(this.StudentAgeTextBox.Text, out Age))
 			{
 				Copy();
-				Student.Name = this.StudentNameTextBox.Text;
-				Student.Surname = this.StudentSernameTextBox.Text;
-				Student.Age = Age;
-				Student.HumanAddress.Country = this.StudentCountryTextBox.Text;
-				Student.HumanAddress.District = this.StudentDistrictTextBox.Text;
-				Student.HumanAddress.City = this.StudentCityTextBox.Text;
-				Student.HumanAddress.Street = this.StudentStreetTextBox.Text;
-				Student.HumanAddress.Housenumber = Housenumber;
-				Student.ImageAddress = imageAddress;
+				_currentStudent.Name = this.StudentNameTextBox.Text;
+				_currentStudent.Surname = this.StudentSernameTextBox.Text;
+				_currentStudent.Age = Age;
+				_currentStudent.HumanAddress.Country = this.StudentCountryTextBox.Text;
+				_currentStudent.HumanAddress.District = this.StudentDistrictTextBox.Text;
+				_currentStudent.HumanAddress.City = this.StudentCityTextBox.Text;
+				_currentStudent.HumanAddress.Street = this.StudentStreetTextBox.Text;
+				_currentStudent.HumanAddress.Housenumber = Housenumber;
+				_currentStudent.ImageAddress = imageAddress;
 				this.Hide();
+				int index;
+				if (IsNew(out index))
+				{
+					selectedTeacher.Students.Add(_currentStudent);
+				}
+				else if(_curentTeacherList.Teachers[index] != selectedTeacher)
+				{
+					_curentTeacherList.Teachers[index].Students.Remove(_currentStudent);
+					selectedTeacher.Students.Add(_currentStudent);
+				}
+				createstudentEvent?.Invoke();
 			}
 			else
 			{
 				MessageBox.Show("not all fields are filled corect");
 			}
 		}
-
+		private bool IsNew(out int i)
+		{
+			bool isNew = true;
+			for (i = 0; i < _curentTeacherList.Teachers.Count(); i++)
+			{
+				if (_curentTeacherList.Teachers[i].Students.Contains(_currentStudent))
+				{
+					isNew = false;
+					break;
+				}
+			}
+			return (isNew);
+		}
 
 		private void StudentForm_Shown(object sender, EventArgs e)
 		{
-			for (int i = 0; i < TeacherList.Teachers.Count(); i++)
+			this.TeachergroupBox.Controls.Clear();
+			for (int i = 0; i < _curentTeacherList.Teachers.Count(); i++)
 			{
 				RadioButton radioButton = new RadioButton();
-				radioButton.Text = TeacherList.Teachers[i].Surname;
-				radioButton.Tag = TeacherList.Teachers[i];
+				radioButton.Text = _curentTeacherList.Teachers[i].Surname;
+				radioButton.Tag = _curentTeacherList.Teachers[i];
 				radioButton.Location = new Point(10, i * 20 + 15);
 				radioButton.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
-				if (TeacherList.Teachers[i].Students.Contains(Student))
+				if (_curentTeacherList.Teachers[i].Students.Contains(_currentStudent))
 				{
 					radioButton.Checked = true;
 				}
 				this.TeachergroupBox.Controls.Add(radioButton);
 				
 			}
-			this.StudentAgeTextBox.Text = Student.Age.ToString();
-			this.StudentNameTextBox.Text = Student.Name;
-			this.StudentSernameTextBox.Text = Student.Surname;
-			this.StudentCountryTextBox.Text = Student.HumanAddress.Country;
-			this.StudentDistrictTextBox.Text = Student.HumanAddress.District;
-			this.StudentCityTextBox.Text = Student.HumanAddress.City;
-			this.StudentStreetTextBox.Text = Student.HumanAddress.Street;
-			this.StudentHousenumberTextBox.Text = Student.HumanAddress.Housenumber.ToString();
-			if (Student.ImageAddress != null)
+			this.StudentAgeTextBox.Text = _currentStudent.Age.ToString();
+			this.StudentNameTextBox.Text = _currentStudent.Name;
+			this.StudentSernameTextBox.Text = _currentStudent.Surname;
+			this.StudentCountryTextBox.Text = _currentStudent.HumanAddress.Country;
+			this.StudentDistrictTextBox.Text = _currentStudent.HumanAddress.District;
+			this.StudentCityTextBox.Text = _currentStudent.HumanAddress.City;
+			this.StudentStreetTextBox.Text = _currentStudent.HumanAddress.Street;
+			this.StudentHousenumberTextBox.Text = _currentStudent.HumanAddress.Housenumber.ToString();
+			try
 			{
-				this.studentPictureBox.Image = Image.FromFile(Student.ImageAddress);
+				this.studentPictureBox.Image = Image.FromFile(_currentStudent.ImageAddress);
 			}
-			else { this.studentPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg"); }
+			catch
+			{
+				this.studentPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg");
+			}
 		}
 
 		/*private void SaveButton_Click(object sender, EventArgs e)
@@ -165,6 +207,89 @@ namespace pr1
 		private void canselStudentButon_Click(object sender, EventArgs e)
 		{
 			this.Hide();
+		}
+		private void StudentApdated()
+		{
+			if(_currentStudent == null)
+			{
+				this.randomize.Visible = false;
+				this.deleteButton.Visible = false;
+				this.saveButton.Visible = true;
+				this.StudentAgeTextBox.Text = "";
+				this.StudentNameTextBox.Text = "";
+				this.StudentSernameTextBox.Text = "";
+				this.StudentCountryTextBox.Text = "";
+				this.StudentDistrictTextBox.Text = "";
+				this.StudentCityTextBox.Text = "";
+				this.StudentStreetTextBox.Text = "";
+				this.StudentHousenumberTextBox.Text = "";
+				this.studentPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg");
+			}
+			else
+			{
+				this.randomize.Visible = true;
+				this.deleteButton.Visible = true;
+				this.saveButton.Visible = false;
+				foreach (RadioButton radioButton in this.TeachergroupBox.Controls)
+				{
+					var teacher = (Teacher)radioButton.Tag;
+					if (teacher.Students.Contains(_currentStudent))
+					{
+						radioButton.Checked = true;
+					}
+					else
+					{
+						radioButton.Checked = false;
+					}
+				}
+				this.StudentAgeTextBox.Text = _currentStudent.Age.ToString();
+				this.StudentNameTextBox.Text = _currentStudent.Name;
+				this.StudentSernameTextBox.Text = _currentStudent.Surname;
+				this.StudentCountryTextBox.Text = _currentStudent.HumanAddress.Country;
+				this.StudentDistrictTextBox.Text = _currentStudent.HumanAddress.District;
+				this.StudentCityTextBox.Text = _currentStudent.HumanAddress.City;
+				this.StudentStreetTextBox.Text = _currentStudent.HumanAddress.Street;
+				this.StudentHousenumberTextBox.Text = _currentStudent.HumanAddress.Housenumber.ToString();
+				try
+				{
+					this.studentPictureBox.Image = Image.FromFile(_currentStudent.ImageAddress);
+				}
+				catch
+				{
+					this.studentPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg");
+				}
+			}
+			
+		}
+		private void TeacherListApdated()
+		{
+			this.TeachergroupBox.Controls.Clear();
+			for (int i = 0; i < _curentTeacherList.Teachers.Count(); i++)
+			{
+				RadioButton radioButton = new RadioButton();
+				radioButton.Text = _curentTeacherList.Teachers[i].Surname;
+				radioButton.Tag = _curentTeacherList.Teachers[i];
+				radioButton.Location = new Point(10, i * 20 + 15);
+				radioButton.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
+				this.TeachergroupBox.Controls.Add(radioButton);
+			}
+		}
+
+		private void deleteButton_Click(object sender, EventArgs e)
+		{
+			var userAnswer = MessageBox.Show("Are you shure?", "Confirmation", MessageBoxButtons.YesNo);
+			if (userAnswer == DialogResult.Yes)
+			{
+				for (int i = 0; i < _curentTeacherList.Teachers.Count(); i++)
+				{
+					if (_curentTeacherList.Teachers[i].Students.Contains(_currentStudent))
+					{
+						_curentTeacherList.Teachers[i].Students.Remove(_currentStudent);
+						break;
+					}
+				}
+				this.Hide();
+			}
 		}
 	}
 }

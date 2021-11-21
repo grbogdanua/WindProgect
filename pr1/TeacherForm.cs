@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace pr1
 {
-	public partial class AddTeacher : Form
+	public partial class TeacherForm : Form
 	{
-		public delegate void createteacher(Teacher teacher);
+		public delegate void createteacher();
 		public event createteacher createteacherEvent;
 		public string curentImageAddress;
 		public string imageAddress;
 		public static DirectoryInfo di;
-		public AddTeacher()
+		public TeacherForm()
 		{
 			InitializeComponent();
 		}
@@ -32,7 +32,7 @@ namespace pr1
 			{
 				Copy();
 				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSernameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));
-				createteacherEvent?.Invoke(teacher);
+				createteacherEvent?.Invoke();
 				this.Hide();
 			}
 			else
@@ -68,7 +68,7 @@ namespace pr1
 			{
 				Copy();
 				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSernameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));
-				createteacherEvent?.Invoke(teacher);
+				createteacherEvent?.Invoke();
 			}
 			else
 			{

@@ -53,6 +53,9 @@ namespace pr1
 			this.canselStudentButon = new System.Windows.Forms.Button();
 			this.FileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.ChangeImageButton = new System.Windows.Forms.Button();
+			this.deleteButton = new System.Windows.Forms.Button();
+			this.saveButton = new System.Windows.Forms.Button();
+			this.randomize = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.studentPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -226,7 +229,7 @@ namespace pr1
 			this.saveStudentButton.Name = "saveStudentButton";
 			this.saveStudentButton.Size = new System.Drawing.Size(94, 27);
 			this.saveStudentButton.TabIndex = 45;
-			this.saveStudentButton.Text = "Save Chenges";
+			this.saveStudentButton.Text = "Save and close";
 			this.saveStudentButton.UseVisualStyleBackColor = true;
 			this.saveStudentButton.Click += new System.EventHandler(this.SaveChengesButton_Click);
 			// 
@@ -251,15 +254,46 @@ namespace pr1
 			this.ChangeImageButton.Name = "ChangeImageButton";
 			this.ChangeImageButton.Size = new System.Drawing.Size(98, 25);
 			this.ChangeImageButton.TabIndex = 47;
-			this.ChangeImageButton.Text = "Chenge Image";
+			this.ChangeImageButton.Text = "Image";
 			this.ChangeImageButton.UseVisualStyleBackColor = true;
 			this.ChangeImageButton.Click += new System.EventHandler(this.ChengeImageButton_Click);
+			// 
+			// deleteButton
+			// 
+			this.deleteButton.Location = new System.Drawing.Point(346, 320);
+			this.deleteButton.Name = "deleteButton";
+			this.deleteButton.Size = new System.Drawing.Size(84, 23);
+			this.deleteButton.TabIndex = 48;
+			this.deleteButton.Text = "Delete";
+			this.deleteButton.UseVisualStyleBackColor = true;
+			this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+			// 
+			// saveButton
+			// 
+			this.saveButton.Location = new System.Drawing.Point(140, 322);
+			this.saveButton.Name = "saveButton";
+			this.saveButton.Size = new System.Drawing.Size(94, 23);
+			this.saveButton.TabIndex = 50;
+			this.saveButton.Text = "Add";
+			this.saveButton.UseVisualStyleBackColor = true;
+			// 
+			// randomize
+			// 
+			this.randomize.Location = new System.Drawing.Point(250, 287);
+			this.randomize.Name = "randomize";
+			this.randomize.Size = new System.Drawing.Size(75, 27);
+			this.randomize.TabIndex = 49;
+			this.randomize.Text = "Randomize";
+			this.randomize.UseVisualStyleBackColor = true;
 			// 
 			// StudentForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.saveButton);
+			this.Controls.Add(this.randomize);
+			this.Controls.Add(this.deleteButton);
 			this.Controls.Add(this.ChangeImageButton);
 			this.Controls.Add(this.canselStudentButon);
 			this.Controls.Add(this.saveStudentButton);
@@ -285,7 +319,6 @@ namespace pr1
 			this.Controls.Add(this.StudentLable);
 			this.Name = "StudentForm";
 			this.Text = "StudentForm";
-			this.Shown += new System.EventHandler(this.StudentForm_Shown);
 			((System.ComponentModel.ISupportInitialize)(this.studentPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -318,5 +351,8 @@ namespace pr1
 		private System.Windows.Forms.Button canselStudentButon;
 		private System.Windows.Forms.OpenFileDialog FileDialog;
 		private System.Windows.Forms.Button ChangeImageButton;
+		private System.Windows.Forms.Button deleteButton;
+		private System.Windows.Forms.Button saveButton;
+		private System.Windows.Forms.Button randomize;
 	}
 }

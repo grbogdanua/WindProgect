@@ -16,12 +16,11 @@ namespace pr1
 	{
 		public TeacherList TeacherList { get; private set; } = new TeacherList();
 		private AddStudent addStudent = new AddStudent();
-		private AddTeacher addTeacher = new AddTeacher();
+		private TeacherForm addTeacher = new TeacherForm();
 		private StudentForm studentForm = new StudentForm();
 		//public static DirectoryInfo di;
 		public Form1()
 		{
-			addStudent.TeacherList = TeacherList;
 			//di = Directory.CreateDirectory("Files\\Image");
 			//InitializeList();
 			//CreateList();
@@ -29,8 +28,8 @@ namespace pr1
 			//initialeDataTanle();
 			InitializeTree(null);
 			InitializeComboBox();
-			addStudent.createstudentEvent += ConectStudentToTeacher;
-			addTeacher.createteacherEvent += OnAddTeacher;
+			studentForm.createstudentEvent += UpdateForm;
+			addTeacher.createteacherEvent += UpdateForm;
 		}
 		
 		private void Form1_Load(object sender, EventArgs e)
@@ -181,14 +180,6 @@ namespace pr1
 					teacher.HumanAddress.Housenumber.ToString()});
 				teacherRow.Tag = teacher;
 				this.teacherListView.Items.Add(teacherRow);
-				/*teacherTable.Rows.Add(teacherTable.Rows.Count + 1,
-					teacher.Surname,
-					teacher.Name,
-					teacher.Age,
-					teacher.Students.Count,
-					teacher.HumanAddress.City,
-					teacher.HumanAddress.Street,
-					teacher.HumanAddress.Housenumber,teacher);*/
 			}
 			else if (activeNode.Tag is Student)
 			{
@@ -203,15 +194,6 @@ namespace pr1
 					student.HumanAddress.Housenumber.ToString()});
 				studentRow.Tag = student;
 				this.studentListView.Items.Add(studentRow);
-				//this.studentListView.Items.Add(studentRow);
-				/*studentTable.Rows.Add(studentTable.Rows.Count + 1,
-					student.Surname,
-					student.Name,
-					student.Age,
-					student.Grade.AverageMark,
-					student.HumanAddress.City,
-					student.HumanAddress.Street,
-					student.HumanAddress.Housenumber,student);*/
 			}
 		}
 		private void ShowSelected_Click(object sender, EventArgs e)
@@ -236,56 +218,23 @@ namespace pr1
 					}
 				}
 			}
-			/*this.TeacherdataGridView.DataSource = teacherTable;
-			this.TeacherdataGridView.Columns[0].Width = 20;
-			this.TeacherdataGridView.Columns[1].Width = 50;
-			this.TeacherdataGridView.Columns[2].Width = 50;
-			this.TeacherdataGridView.Columns[3].Width = 50;
-			this.TeacherdataGridView.Columns[4].Width = 60;
-			this.TeacherdataGridView.Columns[5].Width = 70;
-			this.TeacherdataGridView.Columns[6].Width = 60;
-			this.TeacherdataGridView.Columns[7].Width = 50;
-			this.TeacherdataGridView.Columns[8].Visible = false;
-			this.StudentdataGridView.DataSource = studentTable;
-			this.StudentdataGridView.Columns[0].Width = 20;
-			this.StudentdataGridView.Columns[1].Width = 50;
-			this.StudentdataGridView.Columns[2].Width = 50;
-			this.StudentdataGridView.Columns[3].Width = 50;
-			this.StudentdataGridView.Columns[4].Width = 60;
-			this.StudentdataGridView.Columns[5].Width = 70;
-			this.StudentdataGridView.Columns[6].Width = 60;
-			this.StudentdataGridView.Columns[7].Width = 50;
-			this.StudentdataGridView.Columns[8].Visible = false;*/
 		}
 		private void StudentToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			addStudent.Show();
+			studentForm.TeacherList = TeacherList;
+			studentForm.Student = new Student();
+			studentForm.Show();
 		}
 
 		private void TeacherToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			addTeacher.Show();
 		}
-		void ConectStudentToTeacher(Student student, Teacher teacher)
+		void UpdateForm()
 		{
-			for(int i=0; i<TeacherList.Teachers.Count(); i++)
-			{
-				if(TeacherList.Teachers[i] == teacher)
-				{
-					TeacherList.Teachers[i].Students.Add(student);
-					InitializeTree(null);
-					InitializeComboBox();
-					break;
-				}
-			}
-		}
-		void OnAddTeacher(Teacher teacher)
-		{
-			TeacherList.Teachers.Add(teacher);
 			InitializeTree(null);
 			InitializeComboBox();
 		}
-
 		private void CitycomboBox_SelectedIndexChanged_1(object sender, EventArgs e)
 		{
 			string selectedCity = this.CitycomboBox.SelectedItem.ToString();

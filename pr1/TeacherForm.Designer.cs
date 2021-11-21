@@ -1,7 +1,7 @@
 ﻿
 namespace pr1
 {
-	partial class AddTeacher
+	partial class TeacherForm
 	{
 		/// <summary>
 		/// Required designer variable.
