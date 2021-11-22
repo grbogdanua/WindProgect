@@ -18,6 +18,23 @@ namespace pr1
 		public string curentImageAddress;
 		public string imageAddress;
 		public static DirectoryInfo di;
+		private TeacherList _curentTeacherList;
+		public TeacherList TeacherList
+		{
+			set
+			{
+				_curentTeacherList = value;
+			}
+		}
+		private Teacher _currentTeacher;
+		public Teacher Student
+		{
+			set
+			{
+				_currentTeacher = value;
+				TeacherApdated();
+			}
+		}
 		public TeacherForm()
 		{
 			InitializeComponent();
@@ -25,13 +42,13 @@ namespace pr1
 
 		private void SaveAndHideButton_Click(object sender, EventArgs e)
 		{
-			bool TextBoxIsFilled = this.TeacherAgeTextBox.Text != String.Empty || this.TeacherNameTextBox.Text != String.Empty || this.TeacherSernameTextBox.Text != String.Empty || this.TeacherCountryTextBox.Text != String.Empty || this.TeacherDistrictTextBox.Text != String.Empty || this.TeacherCityTextBox.Text != String.Empty || this.TeacherStreetTextBox.Text != String.Empty || this.TeacherHousenumberTextBox.Text != String.Empty;
+			bool TextBoxIsFilled = this.TeacherAgeTextBox.Text != String.Empty || this.TeacherNameTextBox.Text != String.Empty || this.TeacherSurnameTextBox.Text != String.Empty || this.TeacherCountryTextBox.Text != String.Empty || this.TeacherDistrictTextBox.Text != String.Empty || this.TeacherCityTextBox.Text != String.Empty || this.TeacherStreetTextBox.Text != String.Empty || this.TeacherHousenumberTextBox.Text != String.Empty;
 			int Age = 0;
 			int Housenumber = 0;
 			if (curentImageAddress != null && TextBoxIsFilled == true && int.TryParse(this.TeacherHousenumberTextBox.Text, out Housenumber) && int.TryParse(this.TeacherAgeTextBox.Text, out Age))
 			{
 				Copy();
-				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSernameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));
+				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSurnameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));
 				createteacherEvent?.Invoke();
 				this.Hide();
 			}
@@ -46,7 +63,7 @@ namespace pr1
 			Randomizer randomizer = new Randomizer();
 			this.TeacherAgeTextBox.Text = randomizer.Age();
 			this.TeacherNameTextBox.Text = randomizer.Name();
-			this.TeacherSernameTextBox.Text = randomizer.Surname();
+			this.TeacherSurnameTextBox.Text = randomizer.Surname();
 			this.TeacherCountryTextBox.Text = randomizer.Country();
 			this.TeacherDistrictTextBox.Text = randomizer.District();
 			this.TeacherCityTextBox.Text = randomizer.City();
@@ -61,13 +78,13 @@ namespace pr1
 
 		private void saveButton_Click(object sender, EventArgs e)
 		{
-			bool TextBoxIsFilled = this.TeacherAgeTextBox.Text != String.Empty || this.TeacherNameTextBox.Text != String.Empty || this.TeacherSernameTextBox.Text != String.Empty || this.TeacherCountryTextBox.Text != String.Empty || this.TeacherDistrictTextBox.Text != String.Empty || this.TeacherCityTextBox.Text != String.Empty || this.TeacherStreetTextBox.Text != String.Empty || this.TeacherHousenumberTextBox.Text != String.Empty;
+			bool TextBoxIsFilled = this.TeacherAgeTextBox.Text != String.Empty || this.TeacherNameTextBox.Text != String.Empty || this.TeacherSurnameTextBox.Text != String.Empty || this.TeacherCountryTextBox.Text != String.Empty || this.TeacherDistrictTextBox.Text != String.Empty || this.TeacherCityTextBox.Text != String.Empty || this.TeacherStreetTextBox.Text != String.Empty || this.TeacherHousenumberTextBox.Text != String.Empty;
 			int Age = 0;
 			int Housenumber = 0;
 			if (curentImageAddress != String.Empty && TextBoxIsFilled == true && int.TryParse(this.TeacherHousenumberTextBox.Text, out Housenumber) && int.TryParse(this.TeacherAgeTextBox.Text, out Age))
 			{
 				Copy();
-				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSernameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));
+				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSurnameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));
 				createteacherEvent?.Invoke();
 			}
 			else
@@ -80,7 +97,7 @@ namespace pr1
 		{
 			this.TeacherAgeTextBox.Text = String.Empty;
 			this.TeacherNameTextBox.Text = String.Empty;
-			this.TeacherSernameTextBox.Text = String.Empty;
+			this.TeacherSurnameTextBox.Text = String.Empty;
 			this.TeacherCountryTextBox.Text = String.Empty;
 			this.TeacherDistrictTextBox.Text = String.Empty;
 			this.TeacherCityTextBox.Text = String.Empty;
@@ -112,6 +129,56 @@ namespace pr1
 				this.teacherPictureBox.Image = Image.FromFile(curentImageAddress);
 				//MessageBox.Show(curentImage);
 				//File.Copy(curentImage, imageAddress);
+			}
+		}
+
+		private void teacherDeleteButton_Click(object sender, EventArgs e)
+		{
+			var userAnswer = MessageBox.Show("Are you shure?", "Confirmation", MessageBoxButtons.YesNo);
+			if (userAnswer == DialogResult.Yes)
+			{
+				
+				if (_curentTeacherList.Teachers.Contains(_currentTeacher))
+				{
+					_curentTeacherList.Teachers.Remove(_currentTeacher);
+				}
+				
+				createteacherEvent?.Invoke();
+				this.Hide();
+			}
+		}
+		private void TeacherApdated()
+		{
+			if (_currentTeacher == null)
+			{
+				this.TeacherAgeTextBox.Text = String.Empty;
+				this.TeacherNameTextBox.Text = String.Empty;
+				this.TeacherSurnameTextBox.Text = String.Empty;
+				this.TeacherCountryTextBox.Text = String.Empty;
+				this.TeacherDistrictTextBox.Text = String.Empty;
+				this.TeacherCityTextBox.Text = String.Empty;
+				this.TeacherStreetTextBox.Text = String.Empty;
+				this.TeacherHousenumberTextBox.Text = String.Empty;
+				this.teacherPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg");
+			}
+			else
+			{
+				this.TeacherAgeTextBox.Text = _currentTeacher.Age.ToString();
+				this.TeacherNameTextBox.Text = _currentTeacher.Name;
+				this.TeacherSurnameTextBox.Text = _currentTeacher.Surname;
+				this.TeacherCountryTextBox.Text = _currentTeacher.HumanAddress.Country;
+				this.TeacherDistrictTextBox.Text = _currentTeacher.HumanAddress.District;
+				this.TeacherCityTextBox.Text = _currentTeacher.HumanAddress.City;
+				this.TeacherStreetTextBox.Text = _currentTeacher.HumanAddress.Street;
+				this.TeacherHousenumberTextBox.Text = _currentTeacher.HumanAddress.Housenumber.ToString();
+				try
+				{
+					this.teacherPictureBox.Image = Image.FromFile(_currentTeacher.ImageAddress);
+				}
+				catch
+				{
+					this.teacherPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg");
+				}
 			}
 		}
 	}

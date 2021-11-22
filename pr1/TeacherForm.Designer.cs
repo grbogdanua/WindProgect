@@ -44,7 +44,7 @@ namespace pr1
 			this.SernameTeacherLable = new System.Windows.Forms.Label();
 			this.NameTeacherLable = new System.Windows.Forms.Label();
 			this.TeacherAgeTextBox = new System.Windows.Forms.TextBox();
-			this.TeacherSernameTextBox = new System.Windows.Forms.TextBox();
+			this.TeacherSurnameTextBox = new System.Windows.Forms.TextBox();
 			this.TeacherNameTextBox = new System.Windows.Forms.TextBox();
 			this.TeacherLable = new System.Windows.Forms.Label();
 			this.CanselButton = new System.Windows.Forms.Button();
@@ -54,6 +54,7 @@ namespace pr1
 			this.addImageButton = new System.Windows.Forms.Button();
 			this.teacherPictureBox = new System.Windows.Forms.PictureBox();
 			this.FileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.teacherDeleteButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.teacherPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -182,10 +183,10 @@ namespace pr1
 			// 
 			// TeacherSernameTextBox
 			// 
-			this.TeacherSernameTextBox.Location = new System.Drawing.Point(204, 131);
-			this.TeacherSernameTextBox.Name = "TeacherSernameTextBox";
-			this.TeacherSernameTextBox.Size = new System.Drawing.Size(100, 20);
-			this.TeacherSernameTextBox.TabIndex = 25;
+			this.TeacherSurnameTextBox.Location = new System.Drawing.Point(204, 131);
+			this.TeacherSurnameTextBox.Name = "TeacherSernameTextBox";
+			this.TeacherSurnameTextBox.Size = new System.Drawing.Size(100, 20);
+			this.TeacherSurnameTextBox.TabIndex = 25;
 			// 
 			// TeacherNameTextBox
 			// 
@@ -215,7 +216,7 @@ namespace pr1
 			// 
 			// SaveAndHideButton
 			// 
-			this.SaveAndHideButton.Location = new System.Drawing.Point(204, 372);
+			this.SaveAndHideButton.Location = new System.Drawing.Point(204, 343);
 			this.SaveAndHideButton.Name = "SaveAndHideButton";
 			this.SaveAndHideButton.Size = new System.Drawing.Size(100, 23);
 			this.SaveAndHideButton.TabIndex = 21;
@@ -235,7 +236,7 @@ namespace pr1
 			// 
 			// saveButton
 			// 
-			this.saveButton.Location = new System.Drawing.Point(204, 343);
+			this.saveButton.Location = new System.Drawing.Point(204, 372);
 			this.saveButton.Name = "saveButton";
 			this.saveButton.Size = new System.Drawing.Size(100, 23);
 			this.saveButton.TabIndex = 42;
@@ -267,11 +268,22 @@ namespace pr1
 			this.FileDialog.Filter = "jpg files (*.jpg)|*.jpg";
 			this.FileDialog.Title = "Image";
 			// 
-			// AddTeacher
+			// teacherDeleteButton
+			// 
+			this.teacherDeleteButton.Location = new System.Drawing.Point(335, 343);
+			this.teacherDeleteButton.Name = "teacherDeleteButton";
+			this.teacherDeleteButton.Size = new System.Drawing.Size(76, 23);
+			this.teacherDeleteButton.TabIndex = 45;
+			this.teacherDeleteButton.Text = "Delete";
+			this.teacherDeleteButton.UseVisualStyleBackColor = true;
+			this.teacherDeleteButton.Click += new System.EventHandler(this.teacherDeleteButton_Click);
+			// 
+			// TeacherForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.teacherDeleteButton);
 			this.Controls.Add(this.teacherPictureBox);
 			this.Controls.Add(this.addImageButton);
 			this.Controls.Add(this.saveButton);
@@ -291,12 +303,12 @@ namespace pr1
 			this.Controls.Add(this.SernameTeacherLable);
 			this.Controls.Add(this.NameTeacherLable);
 			this.Controls.Add(this.TeacherAgeTextBox);
-			this.Controls.Add(this.TeacherSernameTextBox);
+			this.Controls.Add(this.TeacherSurnameTextBox);
 			this.Controls.Add(this.TeacherNameTextBox);
 			this.Controls.Add(this.TeacherLable);
 			this.Controls.Add(this.CanselButton);
 			this.Controls.Add(this.SaveAndHideButton);
-			this.Name = "AddTeacher";
+			this.Name = "TeacherForm";
 			this.Text = "AddTeacher";
 			this.Shown += new System.EventHandler(this.AddTeacher_Shown);
 			((System.ComponentModel.ISupportInitialize)(this.teacherPictureBox)).EndInit();
@@ -322,7 +334,7 @@ namespace pr1
 		private System.Windows.Forms.Label SernameTeacherLable;
 		private System.Windows.Forms.Label NameTeacherLable;
 		private System.Windows.Forms.TextBox TeacherAgeTextBox;
-		private System.Windows.Forms.TextBox TeacherSernameTextBox;
+		private System.Windows.Forms.TextBox TeacherSurnameTextBox;
 		private System.Windows.Forms.TextBox TeacherNameTextBox;
 		private System.Windows.Forms.Label TeacherLable;
 		private System.Windows.Forms.Button CanselButton;
@@ -332,5 +344,6 @@ namespace pr1
 		private System.Windows.Forms.Button addImageButton;
 		private System.Windows.Forms.PictureBox teacherPictureBox;
 		private System.Windows.Forms.OpenFileDialog FileDialog;
+		private System.Windows.Forms.Button teacherDeleteButton;
 	}
 }
