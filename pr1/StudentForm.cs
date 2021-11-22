@@ -59,7 +59,7 @@ namespace pr1
 				this.StudentHousenumberTextBox.Text != String.Empty;
 			int Age = 0;
 			int Housenumber = 0;
-			if (curentImageAddress != String.Empty &&
+			if (curentImageAddress !=null &&
 				TextBoxIsFilled == true &&
 				selectedTeacher != null &&
 				int.TryParse(this.StudentHousenumberTextBox.Text, out Housenumber) &&
@@ -212,7 +212,7 @@ namespace pr1
 		{
 			if(_currentStudent == null)
 			{
-				this.randomize.Visible = false;
+				this.randomize.Visible = true;
 				this.deleteButton.Visible = false;
 				this.saveButton.Visible = true;
 				this.StudentAgeTextBox.Text = "";
@@ -224,10 +224,11 @@ namespace pr1
 				this.StudentStreetTextBox.Text = "";
 				this.StudentHousenumberTextBox.Text = "";
 				this.studentPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg");
+				_currentStudent = new Student("","",1,"",new Address(),new Mark());
 			}
 			else
 			{
-				this.randomize.Visible = true;
+				this.randomize.Visible = false;
 				this.deleteButton.Visible = true;
 				this.saveButton.Visible = false;
 				foreach (RadioButton radioButton in this.TeachergroupBox.Controls)
@@ -288,8 +289,22 @@ namespace pr1
 						break;
 					}
 				}
+				createstudentEvent?.Invoke();
 				this.Hide();
 			}
+		}
+
+		private void randomize_Click(object sender, EventArgs e)
+		{
+			Randomizer randomizer = new Randomizer();
+			this.StudentAgeTextBox.Text = randomizer.Age();
+			this.StudentNameTextBox.Text = randomizer.Name();
+			this.StudentSernameTextBox.Text = randomizer.Surname();
+			this.StudentCountryTextBox.Text = randomizer.Country();
+			this.StudentDistrictTextBox.Text = randomizer.District();
+			this.StudentCityTextBox.Text = randomizer.City();
+			this.StudentStreetTextBox.Text = randomizer.Street();
+			this.StudentHousenumberTextBox.Text = randomizer.Housenumber();
 		}
 	}
 }

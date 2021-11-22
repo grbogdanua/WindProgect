@@ -285,6 +285,7 @@ namespace pr1
 			this.randomize.TabIndex = 49;
 			this.randomize.Text = "Randomize";
 			this.randomize.UseVisualStyleBackColor = true;
+			this.randomize.Click += new System.EventHandler(this.randomize_Click);
 			// 
 			// StudentForm
 			// 

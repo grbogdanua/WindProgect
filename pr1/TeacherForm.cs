@@ -28,7 +28,7 @@ namespace pr1
 			bool TextBoxIsFilled = this.TeacherAgeTextBox.Text != String.Empty || this.TeacherNameTextBox.Text != String.Empty || this.TeacherSernameTextBox.Text != String.Empty || this.TeacherCountryTextBox.Text != String.Empty || this.TeacherDistrictTextBox.Text != String.Empty || this.TeacherCityTextBox.Text != String.Empty || this.TeacherStreetTextBox.Text != String.Empty || this.TeacherHousenumberTextBox.Text != String.Empty;
 			int Age = 0;
 			int Housenumber = 0;
-			if (curentImageAddress != String.Empty && TextBoxIsFilled == true && int.TryParse(this.TeacherHousenumberTextBox.Text, out Housenumber) && int.TryParse(this.TeacherAgeTextBox.Text, out Age))
+			if (curentImageAddress != null && TextBoxIsFilled == true && int.TryParse(this.TeacherHousenumberTextBox.Text, out Housenumber) && int.TryParse(this.TeacherAgeTextBox.Text, out Age))
 			{
 				Copy();
 				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSernameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));

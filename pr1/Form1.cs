@@ -222,7 +222,7 @@ namespace pr1
 		private void StudentToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			studentForm.TeacherList = TeacherList;
-			studentForm.Student = new Student();
+			studentForm.Student = null;
 			studentForm.Show();
 		}
 
