@@ -15,8 +15,7 @@ namespace pr1
 	public partial class Form1 : Form
 	{
 		public TeacherList TeacherList { get; private set; } = new TeacherList();
-		private AddStudent addStudent = new AddStudent();
-		private TeacherForm addTeacher = new TeacherForm();
+		private TeacherForm teacherForm = new TeacherForm();
 		private StudentForm studentForm = new StudentForm();
 		//public static DirectoryInfo di;
 		public Form1()
@@ -29,7 +28,7 @@ namespace pr1
 			InitializeTree(null);
 			InitializeComboBox();
 			studentForm.createstudentEvent += UpdateForm;
-			addTeacher.createteacherEvent += UpdateForm;
+			teacherForm.createteacherEvent += UpdateForm;
 		}
 		
 		private void Form1_Load(object sender, EventArgs e)
@@ -123,36 +122,92 @@ namespace pr1
 		}*/
 		public void InitializeTree(string city)
 		{
-			this.treeView1.Nodes.Clear();
-			for (int i = 0; i < TeacherList.Teachers.Count(); i++)
+			//this.treeView1.Nodes.Clear();
+			var alreadyAddedTeachers = new List<Teacher>();
+
+			for (int teacherIndex = treeView1.Nodes.Count - 1; teacherIndex >= 0; teacherIndex--)
 			{
-				if (String.IsNullOrEmpty(city) || TeacherList.Teachers[i].HumanAddress.City == city)
+				var teacherNode = treeView1.Nodes[teacherIndex];
+				var currentTeacher = (Teacher)teacherNode.Tag;
+				if (TeacherList.Teachers.Contains(currentTeacher))
 				{
-					var teacherNode = new TreeNode(TeacherList.Teachers[i].Surname);
-					teacherNode.Tag = TeacherList.Teachers[i];
-					for (int j = 0; j < TeacherList.Teachers[i].Students.Count(); j++)
+					alreadyAddedTeachers.Add(currentTeacher);
+					SetTreeNodeFilterColor(teacherNode, city);
+					var alreadyAddedStudents = new List<Student>();
+					for (int i = teacherNode.Nodes.Count - 1; i >= 0; i--)
 					{
-						if (String.IsNullOrEmpty(city) || TeacherList.Teachers[i].Students[j].HumanAddress.City == city)
+						var studentNode = teacherNode.Nodes[i];
+						var currentStudent = (Student)studentNode.Tag;
+						if (!currentTeacher.Students.Contains(currentStudent))
 						{
-							var studentNode = new TreeNode(TeacherList.Teachers[i].Students[j].Surname);
-							studentNode.Tag = TeacherList.Teachers[i].Students[j];
+							teacherNode.Nodes.Remove(studentNode);
+						}
+						else
+						{
+							alreadyAddedStudents.Add(currentStudent);
+							SetTreeNodeFilterColor(studentNode, city);
+						}
+					}
+					foreach (Student student in currentTeacher.Students)
+					{
+						if (!alreadyAddedStudents.Contains(student))
+						{
+							var studentNode = new TreeNode(student.Surname);
+							studentNode.Tag = student;
+							SetTreeNodeFilterColor(studentNode, city);
 							teacherNode.Nodes.Add(studentNode);
 						}
 					}
-					treeView1.Nodes.Add(teacherNode);
-				}else if (!String.IsNullOrEmpty(city))
+				}
+				else
 				{
-					for (int j = 0; j < TeacherList.Teachers[i].Students.Count(); j++)
-					{
-						if (String.IsNullOrEmpty(city) || TeacherList.Teachers[i].Students[j].HumanAddress.City == city)
-						{
-							var studentNode = new TreeNode(TeacherList.Teachers[i].Students[j].Surname);
-							studentNode.Tag = TeacherList.Teachers[i].Students[j];
-							treeView1.Nodes.Add(studentNode);
-						}
-					}
+					treeView1.Nodes.Remove(teacherNode);
 				}
 			}
+
+			foreach (var teacher in TeacherList.Teachers)
+			{
+				if (!alreadyAddedTeachers.Contains(teacher))
+				{
+					var teacherNode = new TreeNode(teacher.Surname);
+					teacherNode.Tag = teacher;
+					SetTreeNodeFilterColor(teacherNode, city);
+					for (int j = 0; j < teacher.Students.Count(); j++)
+					{
+						var studentNode = new TreeNode(teacher.Students[j].Surname);
+						studentNode.Tag = teacher.Students[j];
+						SetTreeNodeFilterColor(studentNode, city);
+						teacherNode.Nodes.Add(studentNode);
+					}
+					treeView1.Nodes.Add(teacherNode);
+					
+				}
+			}
+			ShowSelected_Click();
+		}
+
+		private void SetTreeNodeFilterColor(TreeNode node, string city)
+		{
+			var color = Color.Black;
+			if (!String.IsNullOrEmpty(city)
+				&& (node.Tag as Human)?.HumanAddress.City != city)
+			{
+				color = Color.Gray;
+			}
+			node.ForeColor = color;
+		}
+
+		private bool TeacherInTreeView(TreeNodeCollection nodes, TreeNode treeNode)
+		{
+			bool teacherInTreeView = false;
+			foreach(TreeNode node in nodes)
+			{
+				if (node.Tag == treeNode.Tag)
+				{
+					teacherInTreeView = true;
+				}
+			}
+			return (teacherInTreeView);
 		}
 		public void InitializeComboBox()
 		{
@@ -196,7 +251,7 @@ namespace pr1
 				this.studentListView.Items.Add(studentRow);
 			}
 		}
-		private void ShowSelected_Click(object sender, EventArgs e)
+		private void ShowSelected_Click()
 		{
 			this.studentListView.Items.Clear();
 			this.teacherListView.Items.Clear();
@@ -218,6 +273,7 @@ namespace pr1
 					}
 				}
 			}
+			ShowFoto(null);
 		}
 		private void StudentToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -228,7 +284,9 @@ namespace pr1
 
 		private void TeacherToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			addTeacher.Show();
+			teacherForm.TeacherList = TeacherList;
+			teacherForm.Teacher = null;
+			teacherForm.Show();
 		}
 		void UpdateForm()
 		{
@@ -287,6 +345,7 @@ namespace pr1
 				{
 					MessageBox.Show(ex.Message);
 				}
+				teacherForm.TeacherList = TeacherList;
 				InitializeComboBox();
 			}
 		}
@@ -324,7 +383,10 @@ namespace pr1
 					if (item.Tag is Teacher)
 					{
 						var teacher = (Teacher)item.Tag;
-					}else if(item.Tag is Student)
+						teacherForm.Teacher = teacher;
+						teacherForm.Show();
+					}
+					else if(item.Tag is Student)
 					{
 						var student = (Student)item.Tag;
 						studentForm.TeacherList = TeacherList;
@@ -333,6 +395,11 @@ namespace pr1
 					}
 				}
 			}
+		}
+
+		private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+		{
+			ShowSelected_Click();
 		}
 	}
 }

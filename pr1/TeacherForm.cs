@@ -27,7 +27,7 @@ namespace pr1
 			}
 		}
 		private Teacher _currentTeacher;
-		public Teacher Student
+		public Teacher Teacher
 		{
 			set
 			{
@@ -48,7 +48,15 @@ namespace pr1
 			if (curentImageAddress != null && TextBoxIsFilled == true && int.TryParse(this.TeacherHousenumberTextBox.Text, out Housenumber) && int.TryParse(this.TeacherAgeTextBox.Text, out Age))
 			{
 				Copy();
-				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSurnameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));
+				_currentTeacher.Name = this.TeacherNameTextBox.Text;
+				_currentTeacher.Surname = this.TeacherSurnameTextBox.Text;
+				_currentTeacher.Age = Age;
+				_currentTeacher.ImageAddress = imageAddress;
+				_currentTeacher.HumanAddress = new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber);
+				if (!_curentTeacherList.Teachers.Contains(_currentTeacher))
+				{
+					_curentTeacherList.Teachers.Add(_currentTeacher);
+				}
 				createteacherEvent?.Invoke();
 				this.Hide();
 			}
@@ -78,13 +86,31 @@ namespace pr1
 
 		private void saveButton_Click(object sender, EventArgs e)
 		{
-			bool TextBoxIsFilled = this.TeacherAgeTextBox.Text != String.Empty || this.TeacherNameTextBox.Text != String.Empty || this.TeacherSurnameTextBox.Text != String.Empty || this.TeacherCountryTextBox.Text != String.Empty || this.TeacherDistrictTextBox.Text != String.Empty || this.TeacherCityTextBox.Text != String.Empty || this.TeacherStreetTextBox.Text != String.Empty || this.TeacherHousenumberTextBox.Text != String.Empty;
+			bool TextBoxIsFilled = this.TeacherAgeTextBox.Text != String.Empty ||
+				this.TeacherNameTextBox.Text != String.Empty ||
+				this.TeacherSurnameTextBox.Text != String.Empty ||
+				this.TeacherCountryTextBox.Text != String.Empty ||
+				this.TeacherDistrictTextBox.Text != String.Empty ||
+				this.TeacherCityTextBox.Text != String.Empty ||
+				this.TeacherStreetTextBox.Text != String.Empty ||
+				this.TeacherHousenumberTextBox.Text != String.Empty;
 			int Age = 0;
 			int Housenumber = 0;
-			if (curentImageAddress != String.Empty && TextBoxIsFilled == true && int.TryParse(this.TeacherHousenumberTextBox.Text, out Housenumber) && int.TryParse(this.TeacherAgeTextBox.Text, out Age))
+			if (curentImageAddress != String.Empty &&
+				TextBoxIsFilled == true &&
+				int.TryParse(this.TeacherHousenumberTextBox.Text, out Housenumber) &&
+				int.TryParse(this.TeacherAgeTextBox.Text, out Age))
 			{
 				Copy();
-				Teacher teacher = new Teacher(this.TeacherNameTextBox.Text, this.TeacherSurnameTextBox.Text, Age, imageAddress, new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber));
+				_currentTeacher.Name = this.TeacherNameTextBox.Text;
+				_currentTeacher.Surname = this.TeacherSurnameTextBox.Text;
+				_currentTeacher.Age = Age;
+				_currentTeacher.ImageAddress = imageAddress;
+				_currentTeacher.HumanAddress = new Address(this.TeacherCountryTextBox.Text, this.TeacherDistrictTextBox.Text, this.TeacherCityTextBox.Text, this.TeacherStreetTextBox.Text, Housenumber);
+				if (!_curentTeacherList.Teachers.Contains(_currentTeacher))
+				{
+					_curentTeacherList.Teachers.Add(_currentTeacher);
+				}
 				createteacherEvent?.Invoke();
 			}
 			else
@@ -151,6 +177,9 @@ namespace pr1
 		{
 			if (_currentTeacher == null)
 			{
+				this.teacherDeleteButton.Visible = false;
+				this.saveButton.Visible = true;
+				this.randomizeButton.Visible = true;
 				this.TeacherAgeTextBox.Text = String.Empty;
 				this.TeacherNameTextBox.Text = String.Empty;
 				this.TeacherSurnameTextBox.Text = String.Empty;
@@ -160,9 +189,13 @@ namespace pr1
 				this.TeacherStreetTextBox.Text = String.Empty;
 				this.TeacherHousenumberTextBox.Text = String.Empty;
 				this.teacherPictureBox.Image = Image.FromFile("Files\\Image\\anonym.jpg");
+				_currentTeacher = new Teacher("", "", 1, "", new Address());
 			}
 			else
 			{
+				this.teacherDeleteButton.Visible = true;
+				this.saveButton.Visible = false;
+				this.randomizeButton.Visible = false;
 				this.TeacherAgeTextBox.Text = _currentTeacher.Age.ToString();
 				this.TeacherNameTextBox.Text = _currentTeacher.Name;
 				this.TeacherSurnameTextBox.Text = _currentTeacher.Surname;

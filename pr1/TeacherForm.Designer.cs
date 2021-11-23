@@ -47,9 +47,9 @@ namespace pr1
 			this.TeacherSurnameTextBox = new System.Windows.Forms.TextBox();
 			this.TeacherNameTextBox = new System.Windows.Forms.TextBox();
 			this.TeacherLable = new System.Windows.Forms.Label();
-			this.CanselButton = new System.Windows.Forms.Button();
-			this.SaveAndHideButton = new System.Windows.Forms.Button();
-			this.randomize = new System.Windows.Forms.Button();
+			this.canselButton = new System.Windows.Forms.Button();
+			this.saveAndHideButton = new System.Windows.Forms.Button();
+			this.randomizeButton = new System.Windows.Forms.Button();
 			this.saveButton = new System.Windows.Forms.Button();
 			this.addImageButton = new System.Windows.Forms.Button();
 			this.teacherPictureBox = new System.Windows.Forms.PictureBox();
@@ -181,10 +181,10 @@ namespace pr1
 			this.TeacherAgeTextBox.Size = new System.Drawing.Size(100, 20);
 			this.TeacherAgeTextBox.TabIndex = 26;
 			// 
-			// TeacherSernameTextBox
+			// TeacherSurnameTextBox
 			// 
 			this.TeacherSurnameTextBox.Location = new System.Drawing.Point(204, 131);
-			this.TeacherSurnameTextBox.Name = "TeacherSernameTextBox";
+			this.TeacherSurnameTextBox.Name = "TeacherSurnameTextBox";
 			this.TeacherSurnameTextBox.Size = new System.Drawing.Size(100, 20);
 			this.TeacherSurnameTextBox.TabIndex = 25;
 			// 
@@ -204,35 +204,35 @@ namespace pr1
 			this.TeacherLable.TabIndex = 23;
 			this.TeacherLable.Text = "Teacher";
 			// 
-			// CanselButton
+			// canselButton
 			// 
-			this.CanselButton.Location = new System.Drawing.Point(442, 343);
-			this.CanselButton.Name = "CanselButton";
-			this.CanselButton.Size = new System.Drawing.Size(75, 23);
-			this.CanselButton.TabIndex = 22;
-			this.CanselButton.Text = "Cansel";
-			this.CanselButton.UseVisualStyleBackColor = true;
-			this.CanselButton.Click += new System.EventHandler(this.CanselButton_Click);
+			this.canselButton.Location = new System.Drawing.Point(442, 343);
+			this.canselButton.Name = "canselButton";
+			this.canselButton.Size = new System.Drawing.Size(75, 23);
+			this.canselButton.TabIndex = 22;
+			this.canselButton.Text = "Cansel";
+			this.canselButton.UseVisualStyleBackColor = true;
+			this.canselButton.Click += new System.EventHandler(this.CanselButton_Click);
 			// 
-			// SaveAndHideButton
+			// saveAndHideButton
 			// 
-			this.SaveAndHideButton.Location = new System.Drawing.Point(204, 343);
-			this.SaveAndHideButton.Name = "SaveAndHideButton";
-			this.SaveAndHideButton.Size = new System.Drawing.Size(100, 23);
-			this.SaveAndHideButton.TabIndex = 21;
-			this.SaveAndHideButton.Text = "Save And Hide";
-			this.SaveAndHideButton.UseVisualStyleBackColor = true;
-			this.SaveAndHideButton.Click += new System.EventHandler(this.SaveAndHideButton_Click);
+			this.saveAndHideButton.Location = new System.Drawing.Point(204, 343);
+			this.saveAndHideButton.Name = "saveAndHideButton";
+			this.saveAndHideButton.Size = new System.Drawing.Size(100, 23);
+			this.saveAndHideButton.TabIndex = 21;
+			this.saveAndHideButton.Text = "Save And Close";
+			this.saveAndHideButton.UseVisualStyleBackColor = true;
+			this.saveAndHideButton.Click += new System.EventHandler(this.SaveAndHideButton_Click);
 			// 
-			// randomize
+			// randomizeButton
 			// 
-			this.randomize.Location = new System.Drawing.Point(291, 287);
-			this.randomize.Name = "randomize";
-			this.randomize.Size = new System.Drawing.Size(75, 23);
-			this.randomize.TabIndex = 41;
-			this.randomize.Text = "Randomize";
-			this.randomize.UseVisualStyleBackColor = true;
-			this.randomize.Click += new System.EventHandler(this.randomize_Click);
+			this.randomizeButton.Location = new System.Drawing.Point(291, 287);
+			this.randomizeButton.Name = "randomizeButton";
+			this.randomizeButton.Size = new System.Drawing.Size(75, 23);
+			this.randomizeButton.TabIndex = 41;
+			this.randomizeButton.Text = "Randomize";
+			this.randomizeButton.UseVisualStyleBackColor = true;
+			this.randomizeButton.Click += new System.EventHandler(this.randomize_Click);
 			// 
 			// saveButton
 			// 
@@ -287,7 +287,7 @@ namespace pr1
 			this.Controls.Add(this.teacherPictureBox);
 			this.Controls.Add(this.addImageButton);
 			this.Controls.Add(this.saveButton);
-			this.Controls.Add(this.randomize);
+			this.Controls.Add(this.randomizeButton);
 			this.Controls.Add(this.TeacherHousenumberTextBox);
 			this.Controls.Add(this.TeacherHousenumber);
 			this.Controls.Add(this.TeacherStreetTextBox);
@@ -306,11 +306,10 @@ namespace pr1
 			this.Controls.Add(this.TeacherSurnameTextBox);
 			this.Controls.Add(this.TeacherNameTextBox);
 			this.Controls.Add(this.TeacherLable);
-			this.Controls.Add(this.CanselButton);
-			this.Controls.Add(this.SaveAndHideButton);
+			this.Controls.Add(this.canselButton);
+			this.Controls.Add(this.saveAndHideButton);
 			this.Name = "TeacherForm";
 			this.Text = "AddTeacher";
-			this.Shown += new System.EventHandler(this.AddTeacher_Shown);
 			((System.ComponentModel.ISupportInitialize)(this.teacherPictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -337,9 +336,9 @@ namespace pr1
 		private System.Windows.Forms.TextBox TeacherSurnameTextBox;
 		private System.Windows.Forms.TextBox TeacherNameTextBox;
 		private System.Windows.Forms.Label TeacherLable;
-		private System.Windows.Forms.Button CanselButton;
-		private System.Windows.Forms.Button SaveAndHideButton;
-		private System.Windows.Forms.Button randomize;
+		private System.Windows.Forms.Button canselButton;
+		private System.Windows.Forms.Button saveAndHideButton;
+		private System.Windows.Forms.Button randomizeButton;
 		private System.Windows.Forms.Button saveButton;
 		private System.Windows.Forms.Button addImageButton;
 		private System.Windows.Forms.PictureBox teacherPictureBox;

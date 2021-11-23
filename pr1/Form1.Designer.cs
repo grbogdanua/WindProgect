@@ -32,7 +32,6 @@ namespace pr1
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.CitycomboBox = new System.Windows.Forms.ComboBox();
-			this.showSelected = new System.Windows.Forms.Button();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.teacherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,6 +69,7 @@ namespace pr1
 			this.treeView1.Name = "treeView1";
 			this.treeView1.Size = new System.Drawing.Size(170, 390);
 			this.treeView1.TabIndex = 2;
+			this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
 			// 
 			// CitycomboBox
 			// 
@@ -79,16 +79,6 @@ namespace pr1
 			this.CitycomboBox.Size = new System.Drawing.Size(169, 21);
 			this.CitycomboBox.TabIndex = 3;
 			this.CitycomboBox.SelectedIndexChanged += new System.EventHandler(this.CitycomboBox_SelectedIndexChanged_1);
-			// 
-			// showSelected
-			// 
-			this.showSelected.Location = new System.Drawing.Point(184, 91);
-			this.showSelected.Name = "showSelected";
-			this.showSelected.Size = new System.Drawing.Size(99, 23);
-			this.showSelected.TabIndex = 4;
-			this.showSelected.Text = "Show selected";
-			this.showSelected.UseVisualStyleBackColor = true;
-			this.showSelected.Click += new System.EventHandler(this.ShowSelected_Click);
 			// 
 			// menuStrip1
 			// 
@@ -282,7 +272,6 @@ namespace pr1
 			this.Controls.Add(this.teacherListView);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.menuStrip1);
-			this.Controls.Add(this.showSelected);
 			this.Controls.Add(this.CitycomboBox);
 			this.Controls.Add(this.treeView1);
 			this.MainMenuStrip = this.menuStrip1;
@@ -300,7 +289,6 @@ namespace pr1
 		#endregion
 		private System.Windows.Forms.TreeView treeView1;
 		private System.Windows.Forms.ComboBox CitycomboBox;
-		private System.Windows.Forms.Button showSelected;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem teacherToolStripMenuItem;
