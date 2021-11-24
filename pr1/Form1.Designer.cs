@@ -38,7 +38,10 @@ namespace pr1
 			this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.jSONToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.teacherListView = new System.Windows.Forms.ListView();
 			this.TeacherID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -67,16 +70,16 @@ namespace pr1
 			this.treeView1.CheckBoxes = true;
 			this.treeView1.Location = new System.Drawing.Point(8, 45);
 			this.treeView1.Name = "treeView1";
-			this.treeView1.Size = new System.Drawing.Size(170, 390);
+			this.treeView1.Size = new System.Drawing.Size(289, 477);
 			this.treeView1.TabIndex = 2;
 			this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
 			// 
 			// CitycomboBox
 			// 
 			this.CitycomboBox.FormattingEnabled = true;
-			this.CitycomboBox.Location = new System.Drawing.Point(184, 45);
+			this.CitycomboBox.Location = new System.Drawing.Point(303, 45);
 			this.CitycomboBox.Name = "CitycomboBox";
-			this.CitycomboBox.Size = new System.Drawing.Size(169, 21);
+			this.CitycomboBox.Size = new System.Drawing.Size(201, 21);
 			this.CitycomboBox.TabIndex = 3;
 			this.CitycomboBox.SelectedIndexChanged += new System.EventHandler(this.CitycomboBox_SelectedIndexChanged_1);
 			// 
@@ -87,7 +90,7 @@ namespace pr1
             this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(880, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1164, 24);
 			this.menuStrip1.TabIndex = 7;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -118,6 +121,7 @@ namespace pr1
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
             this.loadToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -126,24 +130,47 @@ namespace pr1
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
+			// saveAsToolStripMenuItem
+			// 
+			this.saveAsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jSONToolStripMenuItem1});
+			this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveAsToolStripMenuItem.Text = "Save as";
+			// 
+			// jSONToolStripMenuItem1
+			// 
+			this.jSONToolStripMenuItem1.Name = "jSONToolStripMenuItem1";
+			this.jSONToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+			this.jSONToolStripMenuItem1.Text = "JSON";
+			this.jSONToolStripMenuItem1.Click += new System.EventHandler(this.jSONSaveToolStripMenuItem_Click);
+			// 
 			// loadToolStripMenuItem
 			// 
+			this.loadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jSONToolStripMenuItem});
 			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-			this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+			this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.loadToolStripMenuItem.Text = "Load";
-			this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+			// 
+			// jSONToolStripMenuItem
+			// 
+			this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
+			this.jSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.jSONToolStripMenuItem.Text = "JSON";
+			this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONLoadToolStripMenuItem_Click);
 			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
 			this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-			this.pictureBox1.Location = new System.Drawing.Point(185, 211);
+			this.pictureBox1.Location = new System.Drawing.Point(304, 252);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(168, 224);
+			this.pictureBox1.Size = new System.Drawing.Size(200, 258);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox1.TabIndex = 9;
 			this.pictureBox1.TabStop = false;
@@ -161,9 +188,9 @@ namespace pr1
             this.TeacherHouseNumber});
 			this.teacherListView.FullRowSelect = true;
 			this.teacherListView.HideSelection = false;
-			this.teacherListView.Location = new System.Drawing.Point(359, 45);
+			this.teacherListView.Location = new System.Drawing.Point(510, 45);
 			this.teacherListView.Name = "teacherListView";
-			this.teacherListView.Size = new System.Drawing.Size(509, 190);
+			this.teacherListView.Size = new System.Drawing.Size(642, 185);
 			this.teacherListView.TabIndex = 10;
 			this.teacherListView.UseCompatibleStateImageBehavior = false;
 			this.teacherListView.View = System.Windows.Forms.View.Details;
@@ -219,9 +246,9 @@ namespace pr1
             this.StudentHouseNumber});
 			this.studentListView.FullRowSelect = true;
 			this.studentListView.HideSelection = false;
-			this.studentListView.Location = new System.Drawing.Point(359, 242);
+			this.studentListView.Location = new System.Drawing.Point(510, 236);
 			this.studentListView.Name = "studentListView";
-			this.studentListView.Size = new System.Drawing.Size(509, 193);
+			this.studentListView.Size = new System.Drawing.Size(642, 286);
 			this.studentListView.TabIndex = 11;
 			this.studentListView.UseCompatibleStateImageBehavior = false;
 			this.studentListView.View = System.Windows.Forms.View.Details;
@@ -267,7 +294,7 @@ namespace pr1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(880, 447);
+			this.ClientSize = new System.Drawing.Size(1164, 534);
 			this.Controls.Add(this.studentListView);
 			this.Controls.Add(this.teacherListView);
 			this.Controls.Add(this.pictureBox1);
@@ -315,6 +342,9 @@ namespace pr1
 		private System.Windows.Forms.ColumnHeader StudentCity;
 		private System.Windows.Forms.ColumnHeader StudentStrit;
 		private System.Windows.Forms.ColumnHeader StudentHouseNumber;
+		private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem jSONToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem jSONToolStripMenuItem;
 	}
 }
 

@@ -2,6 +2,8 @@
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Formatters.Soap;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -17,6 +19,8 @@ namespace pr1
 		public TeacherList TeacherList { get; private set; } = new TeacherList();
 		private TeacherForm teacherForm = new TeacherForm();
 		private StudentForm studentForm = new StudentForm();
+		private string file;
+		SoapFormatter formatter = new SoapFormatter();
 		//public static DirectoryInfo di;
 		public Form1()
 		{
@@ -290,8 +294,8 @@ namespace pr1
 		}
 		void UpdateForm()
 		{
-			InitializeTree(null);
 			InitializeComboBox();
+			InitializeTree(this.CitycomboBox.Text);
 		}
 		private void CitycomboBox_SelectedIndexChanged_1(object sender, EventArgs e)
 		{
@@ -322,34 +326,23 @@ namespace pr1
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
-			using (StreamWriter fileStream = new StreamWriter("TeacherList.json"))
+			char[] separator = { '.' };
+			string[] curentFile = file.Split(separator);
+			if (curentFile[1] == "json")
 			{
-				string jsonTeachers = JsonConvert.SerializeObject(TeacherList);
-				fileStream.Write(jsonTeachers);
+				using (StreamWriter fileStream = new StreamWriter("TeacherList.json"))
+				{
+					string jsonTeachers = JsonConvert.SerializeObject(TeacherList);
+					fileStream.Write(jsonTeachers);
+				}
+			}else if(curentFile[1] == "soap")
+			{
+				using (FileStream fs = new FileStream("TeacherList.soap", FileMode.OpenOrCreate))
+				{
+					formatter.Serialize(fs, TeacherList);
+				}
 			}
 		}
-
-		private void loadToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			using(StreamReader fileStream = new StreamReader("TeacherList.json"))
-			{
-				string jsonTeachers = fileStream.ReadToEnd();
-				try
-				{
-					var teachersFromFile = JsonConvert.DeserializeObject<TeacherList>(jsonTeachers);
-					this.TeacherList = teachersFromFile;
-					InitializeTree(this.CitycomboBox.SelectedItem?.ToString());
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message);
-				}
-				teacherForm.TeacherList = TeacherList;
-				InitializeComboBox();
-			}
-		}
-
 		private void ShowFoto(string addressFoto)
 		{
 			if (addressFoto != null)
@@ -396,10 +389,54 @@ namespace pr1
 				}
 			}
 		}
-
 		private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
 		{
 			ShowSelected_Click();
+		}
+
+		private void jSONLoadToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (StreamReader fileStream = new StreamReader("TeacherList.json"))
+			{
+				string jsonTeachers = fileStream.ReadToEnd();
+				try
+				{
+					var teachersFromFile = JsonConvert.DeserializeObject<TeacherList>(jsonTeachers);
+					this.TeacherList = teachersFromFile;
+					InitializeTree(this.CitycomboBox.SelectedItem?.ToString());
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+				teacherForm.TeacherList = TeacherList;
+				InitializeComboBox();
+				file = "TeacherList.json";
+			}
+		}
+		private void soapLoadToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (FileStream fs = new FileStream("TeacherList.soap", FileMode.OpenOrCreate))
+			{
+				var newTeacherList = (TeacherList)formatter.Deserialize(fs);
+				TeacherList = newTeacherList;
+			}
+			file = "TeacherList.dat";
+		}
+		private void soapSaveToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (FileStream fs = new FileStream("TeacherList.soap", FileMode.OpenOrCreate))
+			{
+				formatter.Serialize(fs, TeacherList);
+			}
+		}
+		private void jSONSaveToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (StreamWriter fileStream = new StreamWriter("TeacherList.json"))
+			{
+				string jsonTeachers = JsonConvert.SerializeObject(TeacherList);
+				fileStream.Write(jsonTeachers);
+			}
 		}
 	}
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace pr1
 {
+	[Serializable]
 	public enum StudentType
 	{
 		Excellent,
@@ -14,6 +15,7 @@ namespace pr1
 		Stupid,
 		Verystupid
 	}
+	[Serializable]
 	public class Mark
 	{
 		public int[] Marks { get; set; }

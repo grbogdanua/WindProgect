@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pr1
 {
-
+	[Serializable]
 	public class Teacher : Human
 	{ 
 

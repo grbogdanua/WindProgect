@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace pr1
 {
+	[Serializable]
 	public class Human
 	{
 		public string Name { get; set; }

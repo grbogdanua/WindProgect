@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace pr1
 {
+	[Serializable]
 	public class Address
 	{
 		public string Country { get; set; }
